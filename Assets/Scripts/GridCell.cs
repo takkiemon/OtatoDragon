@@ -31,9 +31,11 @@ public class GridCell : MonoBehaviour
             {
                 case Occupant.factory:
                     cellOccupant = new FactoryOccupant();
+                    Instantiate((GameObject)Resources.Load("Prefabs/Factory", typeof(GameObject)),transform);
                     break;
                 case Occupant.tree:
                     cellOccupant = new TreeOccupant();
+                    Instantiate((GameObject)Resources.Load("Prefabs/Tree Variant", typeof(GameObject)), transform);
                     break;
                 default:
                     break;
@@ -45,11 +47,12 @@ public class GridCell : MonoBehaviour
     {
         if (cellOccupant == null)
         {
-            cellOccupant = new TreeOccupant();
+            SetOccupant(Occupant.tree);
         }
         else if (cellOccupant is FactoryOccupant)
         {
             cellOccupant = null;
+            Destroy(transform.GetChild(0).gameObject);
         }
     }
 }

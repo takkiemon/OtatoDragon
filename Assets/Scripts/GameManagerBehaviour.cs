@@ -10,7 +10,12 @@ public class GameManagerBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        GetComponentsInChildren<GridCell>()[2].SetOccupant(GridCell.Occupant.factory);
+        GetComponentsInChildren<GridCell>()[5].SetOccupant(GridCell.Occupant.factory);
+        GetComponentsInChildren<GridCell>()[8].SetOccupant(GridCell.Occupant.factory);
+        GetComponentsInChildren<GridCell>()[0].SetOccupant(GridCell.Occupant.factory);
+        GetComponentsInChildren<GridCell>()[1].SetOccupant(GridCell.Occupant.factory);
+        GetComponentsInChildren<GridCell>()[20].SetOccupant(GridCell.Occupant.factory);
     }
 
     // Update is called once per frame
