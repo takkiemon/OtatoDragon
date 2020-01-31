@@ -4,25 +4,18 @@ using UnityEngine;
 
 public class GridCell : MonoBehaviour
 {
-    //ICellOccupant cellOccupant; // the type of thing that is occupying the gridcell (tree or factory)
-
-    // Start is called before the first frame update
-    void Start()
+    ICellOccupant cellOccupant; // the type of thing that is occupying the gridcell (tree or factory)
+    public enum Occupant
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        factory = 0,
+        tree = 1
     }
 
     public int GetPollutionCount()
     {
-        if (true/*cellOccupant*/)
+        if (cellOccupant != null)
         {
-            return 0;// cellOccupant.Pollution();
+            return cellOccupant.Pollution();
         }
         else
         {
@@ -30,15 +23,33 @@ public class GridCell : MonoBehaviour
         }
     }
 
-    public void SetOccupant(/*ICellOccupant type*/)
+    public void SetOccupant(Occupant type)
     {
-        /*if (cellOccupant != null)
+        if (cellOccupant == null)
         {
-        cellOccupant = type;
+            switch (type)
+            {
+                case Occupant.factory:
+                    cellOccupant = new FactoryOccupant();
+                    break;
+                case Occupant.tree:
+                    cellOccupant = new TreeOccupant();
+                    break;
+                default:
+                    break;
+            }
         }
-        else
+    }
+
+    public void Interact()
+    {
+        if (cellOccupant == null)
         {
-        Destroy the current occupant? deny the request to set occupant?
-        }*/
+            cellOccupant = new TreeOccupant();
+        }
+        else if (cellOccupant is FactoryOccupant)
+        {
+            cellOccupant = null;
+        }
     }
 }

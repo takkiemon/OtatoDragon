@@ -5,5 +5,5 @@ using UnityEngine;
 public interface ICellOccupant
 {
     //Return the amount of polution caused by the occupying object.
-    int Polution();
+    int Pollution();
 }
