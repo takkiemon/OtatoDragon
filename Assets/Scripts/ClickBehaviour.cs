@@ -20,8 +20,7 @@ public class ClickBehaviour : MonoBehaviour
 
     void OnMouseDown()
     {
-        // Execute something
-        Destroy(this.gameObject);
+        GetComponent<GridCell>().Interact();
     }
 
 

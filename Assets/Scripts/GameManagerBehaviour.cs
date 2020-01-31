@@ -22,10 +22,10 @@ public class GameManagerBehaviour : MonoBehaviour
     int GetPollution()
 	{
         int totalPolution = 0;
-        CellBehaviour[] cellArray = this.gameObject.GetComponentsInChildren<CellBehaviour>();
-        foreach (CellBehaviour cell in cellArray)
+        GridCell[] cellArray = this.gameObject.GetComponentsInChildren<GridCell>();
+        foreach (GridCell cell in cellArray)
         {
-            totalPolution += cell.GetPollution();
+            totalPolution += cell.GetPollutionCount();
         };
 
         return totalPolution;
