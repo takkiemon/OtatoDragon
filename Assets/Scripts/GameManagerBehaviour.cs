@@ -20,6 +20,7 @@ public class GameManagerBehaviour : MonoBehaviour
     public float maximumTimeToSpawnFactory; // in seconds
     public int inverseSpawnChance; // value of 20 means 1 in 20;
     public float factorySpawnTimer; // it's public so we can check this in the editor
+    public int startingPollution;
     int chance;
 
     private static int seeds;
@@ -27,13 +28,8 @@ public class GameManagerBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponentsInChildren<GridCell>()[2].SetOccupant(GridCell.Occupant.factory);
-        GetComponentsInChildren<GridCell>()[5].SetOccupant(GridCell.Occupant.factory);
-        GetComponentsInChildren<GridCell>()[8].SetOccupant(GridCell.Occupant.factory);
-        GetComponentsInChildren<GridCell>()[0].SetOccupant(GridCell.Occupant.factory);
-        GetComponentsInChildren<GridCell>()[1].SetOccupant(GridCell.Occupant.factory);
-        GetComponentsInChildren<GridCell>()[20].SetOccupant(GridCell.Occupant.factory);
-
+        for (int i = 0; i < 3; i++)
+            SpawnFactoryOnRandomTile();
 
         if (PollutionChanged == null)
             PollutionChanged = new UnityEvent();
@@ -70,7 +66,7 @@ public class GameManagerBehaviour : MonoBehaviour
 
     int GetPollution()
 	{
-        int totalPollution = 0;
+        int totalPollution = startingPollution;
         GridCell[] cellArray = this.gameObject.GetComponentsInChildren<GridCell>();
         foreach (GridCell cell in cellArray)
         {
@@ -119,6 +115,9 @@ public class GameManagerBehaviour : MonoBehaviour
         if (GetComponentsInChildren<GridCell>()[chance].GetOccupantType() == GridCell.Occupant.empty)
         {
             GetComponentsInChildren<GridCell>()[chance].SetOccupant(GridCell.Occupant.factory);
+        } else if (GetComponentsInChildren<GridCell>()[chance].GetOccupantType() == GridCell.Occupant.factory)
+        {
+            GetComponentsInChildren<GridCell>()[chance].UpgradeOccupant();
         }
     }
 }

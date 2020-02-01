@@ -51,7 +51,8 @@ public class GridCell : MonoBehaviour
                 case Occupant.tree:
                     cellOccupant = new TreeOccupant();
                     Instantiate((GameObject)Resources.Load("Prefabs/Tree Variant", typeof(GameObject)), transform);
-                    break;
+                Invoke("UpgradeOccupant", 20);
+                break;
                 case Occupant.empty:
                     if (transform.childCount > 0)
                     {
@@ -83,7 +84,7 @@ public class GridCell : MonoBehaviour
         }
     }
 
-    void UpgradeOccupant()
+    public void UpgradeOccupant()
     {
         if (cellOccupant == null)
             SetOccupant(Occupant.factory);
@@ -91,6 +92,6 @@ public class GridCell : MonoBehaviour
             cellOccupant.IncreaseStage();
         GetComponentInParent<GameManagerBehaviour>().PollutionChanged.Invoke();
 
-        Invoke("UpgradeOccupant", Random.Range(0,30f));
+        Invoke("UpgradeOccupant", 20);
     }
 }
