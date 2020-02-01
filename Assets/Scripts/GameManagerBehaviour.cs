@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManagerBehaviour : MonoBehaviour
 {
     public Text pollutionText;
+    public TextMeshProUGUI seedText;
+    public Image pollutionBar;
     public UnityEvent PollutionChanged;
     private static int seeds;
 
@@ -26,12 +30,16 @@ public class GameManagerBehaviour : MonoBehaviour
         if (PollutionChanged == null)
             PollutionChanged = new UnityEvent();
         pollutionText.text = "pollution: " + GetPollution();
+        pollutionBar.fillAmount = GetPollution() /100;
+        seedText.text = seeds.ToString();
         PollutionChanged.AddListener(PollutionChangedAction);
     }
 
     // Update is called once per frame
     void PollutionChangedAction()
     {
+
+        pollutionBar.fillAmount = GetPollution() / 100f;
         pollutionText.text = "pollution: " + GetPollution();
         if (GetPollution() <= 0)
             Debug.Log("Win");
@@ -60,6 +68,7 @@ public class GameManagerBehaviour : MonoBehaviour
     public void GainSeed()
     {
         seeds++;
+        seedText.text = seeds.ToString();
     }
 
     public bool SpendSeed()
@@ -67,6 +76,7 @@ public class GameManagerBehaviour : MonoBehaviour
         if (seeds > 0)
         {
             seeds--;
+            seedText.text = seeds.ToString();
             return true;
         }
 
