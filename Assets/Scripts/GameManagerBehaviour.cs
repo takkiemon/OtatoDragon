@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Assertions.Must;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManagerBehaviour : MonoBehaviour
 {
@@ -33,11 +34,11 @@ public class GameManagerBehaviour : MonoBehaviour
     void PollutionChangedAction()
     {
         pollutionText.text = "pollution: " + GetPollution();
-        if (GetPollution() <= 0)
-            Debug.Log("Win");
-        if (GetPollution() >= 100)
-            Debug.Log("Lost");
-        
+        if (GetPollution() <= 0) {
+            SceneManager.LoadScene("WinScene");
+        } else if (GetPollution() >= 100) {
+            SceneManager.LoadScene("LoseScene");
+        }
     }
 
     int GetPollution()
