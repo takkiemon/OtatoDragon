@@ -23,7 +23,7 @@ public class GameManagerBehaviour : MonoBehaviour
     public int startingPollution;
     int chance;
 
-    private static int seeds;
+    private int seeds;
 
     private GridCell[,] grid;
     public int gridSize = 5;
