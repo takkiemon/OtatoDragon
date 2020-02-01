@@ -5,6 +5,7 @@ using UnityEngine;
 public class ClickBehaviour : MonoBehaviour
 {
     private Color startcolor;
+    public GameObject acornPlane;
 
     // Start is called before the first frame update
     void Start()

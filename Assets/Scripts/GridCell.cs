@@ -5,6 +5,9 @@ using UnityEngine;
 public class GridCell : MonoBehaviour
 {
     ICellOccupant cellOccupant; // the type of thing that is occupying the gridcell (tree or factory)
+    public GameObject acornPlane;
+    public GameObject acornUIElement;
+
     public enum Occupant
     {
         empty = 0,
@@ -75,12 +78,16 @@ public class GridCell : MonoBehaviour
             if (GetComponentInParent<GameManagerBehaviour>().SpendSeed())
             {
                 SetOccupant(Occupant.tree);
+                var acornObject = Instantiate(acornPlane, this.transform.position, this.transform.rotation);
+                acornObject.GetComponent<acornFeedbackBehavior>().SetValues(this.transform.position, GetComponent<GridCell>().transform.position, .002f);
             }
         }
         else if (cellOccupant is FactoryOccupant)
         {
             SetOccupant(Occupant.empty);
             GetComponentInParent<GameManagerBehaviour>().GainSeed();
+            var acornObject = Instantiate(acornPlane, this.transform.position, this.transform.rotation);
+            acornObject.GetComponent<acornFeedbackBehavior>().SetValues(GetComponent<GridCell>().transform.position, this.transform.position, .002f);
         }
     }
 
