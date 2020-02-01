@@ -8,6 +8,8 @@ public class GridCell : MonoBehaviour
     public GameObject acornPlane;
     public GameObject acornUIElement;
 
+    private Vector3 ResourcePosition = new Vector3(173, 90, -2);
+
     public enum Occupant
     {
         empty = 0,
@@ -78,16 +80,18 @@ public class GridCell : MonoBehaviour
             if (GetComponentInParent<GameManagerBehaviour>().SpendSeed())
             {
                 SetOccupant(Occupant.tree);
-                var acornObject = Instantiate(acornPlane, this.transform.position, this.transform.rotation);
-                acornObject.GetComponent<acornFeedbackBehavior>().SetValues(this.transform.position, GetComponent<GridCell>().transform.position, .002f);
+                var acornObject = Instantiate(acornPlane);
+                acornObject.GetComponent<acornFeedbackBehavior>().SetValues(ResourcePosition, this.transform.position, 60.0f);
+                Debug.Log("factory destroy: lerp from (" + acornUIElement.transform.localPosition + ") to (" + this.transform.position + ")");
             }
         }
         else if (cellOccupant is FactoryOccupant)
         {
             SetOccupant(Occupant.empty);
             GetComponentInParent<GameManagerBehaviour>().GainSeed();
-            var acornObject = Instantiate(acornPlane, this.transform.position, this.transform.rotation);
-            acornObject.GetComponent<acornFeedbackBehavior>().SetValues(GetComponent<GridCell>().transform.position, this.transform.position, .002f);
+            var acornObject = Instantiate(acornPlane);
+            acornObject.GetComponent<acornFeedbackBehavior>().SetValues(this.transform.position, ResourcePosition, 60.0f);
+            Debug.Log("factory destroy: lerp from (" + this.transform.position + ") to (" + Camera.main.ScreenToWorldPoint(acornUIElement.transform.position) + ")");
         }
     }
 
