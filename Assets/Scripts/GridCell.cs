@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class GridCell : MonoBehaviour
@@ -12,8 +13,18 @@ public class GridCell : MonoBehaviour
         tree = 2
     }
 
+    Occupant GetOccupantType()
+    {
+        if (cellOccupant is TreeOccupant)
+            return Occupant.tree;
+        else if (cellOccupant is FactoryOccupant)
+            return Occupant.factory;
+        return Occupant.empty;
+    }
+
     void Start()
     {
+        Invoke("UpgradeOccupant", Random.Range(0, 30f));
     }
 
     public int GetPollutionCount()
@@ -37,7 +48,7 @@ public class GridCell : MonoBehaviour
                 case Occupant.factory:
                     cellOccupant = new FactoryOccupant();
                     Instantiate((GameObject)Resources.Load("Prefabs/Factory", typeof(GameObject)),transform);
-                    break;
+                break;
                 case Occupant.tree:
                     cellOccupant = new TreeOccupant();
                     Instantiate((GameObject)Resources.Load("Prefabs/Tree Variant", typeof(GameObject)), transform);
@@ -71,5 +82,16 @@ public class GridCell : MonoBehaviour
             SetOccupant(Occupant.empty);
             GetComponentInParent<GameManagerBehaviour>().GainSeed();
         }
+    }
+
+    void UpgradeOccupant()
+    {
+        if (cellOccupant == null)
+            SetOccupant(Occupant.factory);
+        else
+            cellOccupant.IncreaseStage();
+        GetComponentInParent<GameManagerBehaviour>().PollutionChanged.Invoke();
+
+        Invoke("UpgradeOccupant", Random.Range(0,30f));
     }
 }
