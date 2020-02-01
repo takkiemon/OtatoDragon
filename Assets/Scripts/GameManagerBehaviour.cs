@@ -6,11 +6,11 @@ using UnityEngine;
 using UnityEngine.Assertions.Must;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using TMPro;
 using UnityEngine.SceneManagement;
 
 public class GameManagerBehaviour : MonoBehaviour
 {
+    public GameObject seedObject;
     public TextMeshProUGUI seedText;
     public Image pollutionBar;
     public UnityEvent PollutionChanged;
@@ -26,11 +26,28 @@ public class GameManagerBehaviour : MonoBehaviour
     public GameObject acornPlane;
     public GameObject acornUIElement;
 
-    private static int seeds;
+    private int seeds;
+
+    private GridCell[,] grid;
+    public int gridSize = 5;
+    public GameObject gridCell;
 
     // Start is called before the first frame update
     void Start()
     {
+        grid = new GridCell[gridSize,gridSize];
+
+        for (int x = 0; x < gridSize; x++)
+        {
+            for (int y = 0; y < gridSize; y++)
+            {
+                grid[x, y] = Instantiate(gridCell, new Vector3(50 * x - 25 * gridSize, 25*y - 12.5f*gridSize,0), new Quaternion(), transform)
+                    .GetComponent<GridCell>();
+                grid[x,y].pos = new Vector2Int(x,y);
+            }
+        }
+
+
         for (int i = 0; i < 3; i++)
             SpawnFactoryOnRandomTile();
 
@@ -81,11 +98,6 @@ public class GameManagerBehaviour : MonoBehaviour
         return totalPollution;
     }
 
-    bool IsWinConditionMet(int pollution)
-    {
-        return pollution == 0;
-    }
-
     public void GainSeed()
     {
         seeds++;
@@ -99,9 +111,11 @@ public class GameManagerBehaviour : MonoBehaviour
             seeds--;
             seedText.text = seeds.ToString();
             return true;
+        } else
+        {
+            seedObject.GetComponent<BlinkBehaviour>().BlinkRed();
+            return false;
         }
-
-        return false;
     }
 
     public void RollDieForFactorySpawn() // this function checks first if it spawns or not, so I want to rename it, but I couldn't think of a better name. // CheckToSpawnFactory() // SpawnFactoryOrNot()
@@ -133,5 +147,22 @@ public class GameManagerBehaviour : MonoBehaviour
             cell.acornPlane = this.acornPlane;
             cell.acornUIElement = this.acornUIElement;
         }
+    }
+
+    public bool NeighbourPolluted(Vector2Int pos)
+    {
+        if (pos.x > 0)
+            if (grid[pos.x - 1, pos.y].GetOccupantType() == GridCell.Occupant.factory)
+                return true;
+        if (pos.x< gridSize-1)
+            if (grid[pos.x + 1, pos.y].GetOccupantType() == GridCell.Occupant.factory)
+                return true;
+        if (pos.y > 0)
+            if (grid[pos.x, pos.y - 1].GetOccupantType() == GridCell.Occupant.factory)
+                return true;
+        if (pos.y < gridSize -1)
+            if (grid[pos.x, pos.y + 1].GetOccupantType() == GridCell.Occupant.factory)
+                return true;
+        return false;
     }
 }

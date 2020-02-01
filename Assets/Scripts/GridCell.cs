@@ -7,6 +7,7 @@ public class GridCell : MonoBehaviour
     ICellOccupant cellOccupant; // the type of thing that is occupying the gridcell (tree or factory)
     public GameObject acornPlane;
     public GameObject acornUIElement;
+    public Vector2Int pos;
 
     private Vector3 ResourcePosition = new Vector3(173, 90, -2);
 
@@ -77,12 +78,15 @@ public class GridCell : MonoBehaviour
     {
         if (cellOccupant == null)
         {
-            if (GetComponentInParent<GameManagerBehaviour>().SpendSeed())
+            if (!GetComponentInParent<GameManagerBehaviour>().NeighbourPolluted(pos))
             {
-                SetOccupant(Occupant.tree);
-                var acornObject = Instantiate(acornPlane);
-                acornObject.GetComponent<acornFeedbackBehavior>().SetValues(ResourcePosition, this.transform.position, 60.0f);
-                Debug.Log("factory destroy: lerp from (" + acornUIElement.transform.localPosition + ") to (" + this.transform.position + ")");
+                if (GetComponentInParent<GameManagerBehaviour>().SpendSeed())
+                {
+                    SetOccupant(Occupant.tree);
+                    var acornObject = Instantiate(acornPlane);
+                    acornObject.GetComponent<acornFeedbackBehavior>().SetValues(ResourcePosition, this.transform.position, 60.0f);
+                    Debug.Log("factory destroy: lerp from (" + acornUIElement.transform.localPosition + ") to (" + this.transform.position + ")");
+                }
             }
         }
         else if (cellOccupant is FactoryOccupant)
