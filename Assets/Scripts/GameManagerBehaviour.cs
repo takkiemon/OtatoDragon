@@ -6,11 +6,11 @@ using UnityEngine;
 using UnityEngine.Assertions.Must;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using TMPro;
 using UnityEngine.SceneManagement;
 
 public class GameManagerBehaviour : MonoBehaviour
 {
+    public GameObject seedObject;
     public TextMeshProUGUI seedText;
     public Image pollutionBar;
     public UnityEvent PollutionChanged;
@@ -76,11 +76,6 @@ public class GameManagerBehaviour : MonoBehaviour
         return totalPollution;
     }
 
-    bool IsWinConditionMet(int pollution)
-    {
-        return pollution == 0;
-    }
-
     public void GainSeed()
     {
         seeds++;
@@ -94,9 +89,11 @@ public class GameManagerBehaviour : MonoBehaviour
             seeds--;
             seedText.text = seeds.ToString();
             return true;
+        } else
+        {
+            seedObject.GetComponent<BlinkBehaviour>().BlinkRed();
+            return false;
         }
-
-        return false;
     }
 
     public void RollDieForFactorySpawn() // this function checks first if it spawns or not, so I want to rename it, but I couldn't think of a better name. // CheckToSpawnFactory() // SpawnFactoryOrNot()
