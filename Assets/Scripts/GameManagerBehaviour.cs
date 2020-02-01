@@ -25,9 +25,26 @@ public class GameManagerBehaviour : MonoBehaviour
 
     private static int seeds;
 
+    private GridCell[,] grid;
+    public int gridSize = 5;
+    public GameObject gridCell;
+
     // Start is called before the first frame update
     void Start()
     {
+        grid = new GridCell[gridSize,gridSize];
+
+        for (int x = 0; x < gridSize; x++)
+        {
+            for (int y = 0; y < gridSize; y++)
+            {
+                grid[x, y] = Instantiate(gridCell, new Vector3(50 * x - 25 * gridSize, 25*y - 12.5f*gridSize,0), new Quaternion(), transform)
+                    .GetComponent<GridCell>();
+                grid[x,y].pos = new Vector2Int(x,y);
+            }
+        }
+
+
         for (int i = 0; i < 3; i++)
             SpawnFactoryOnRandomTile();
 
@@ -116,5 +133,22 @@ public class GameManagerBehaviour : MonoBehaviour
         {
             GetComponentsInChildren<GridCell>()[chance].UpgradeOccupant();
         }
+    }
+
+    public bool NeighbourPolluted(Vector2Int pos)
+    {
+        if (pos.x > 0)
+            if (grid[pos.x - 1, pos.y].GetOccupantType() == GridCell.Occupant.factory)
+                return true;
+        if (pos.x< gridSize-1)
+            if (grid[pos.x + 1, pos.y].GetOccupantType() == GridCell.Occupant.factory)
+                return true;
+        if (pos.y > 0)
+            if (grid[pos.x, pos.y - 1].GetOccupantType() == GridCell.Occupant.factory)
+                return true;
+        if (pos.y < gridSize -1)
+            if (grid[pos.x, pos.y + 1].GetOccupantType() == GridCell.Occupant.factory)
+                return true;
+        return false;
     }
 }

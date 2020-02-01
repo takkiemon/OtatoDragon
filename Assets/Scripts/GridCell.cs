@@ -5,6 +5,7 @@ using UnityEngine;
 public class GridCell : MonoBehaviour
 {
     ICellOccupant cellOccupant; // the type of thing that is occupying the gridcell (tree or factory)
+    public  Vector2Int pos;
     public enum Occupant
     {
         empty = 0,
@@ -72,9 +73,12 @@ public class GridCell : MonoBehaviour
     {
         if (cellOccupant == null)
         {
-            if (GetComponentInParent<GameManagerBehaviour>().SpendSeed())
+            if (!GetComponentInParent<GameManagerBehaviour>().NeighbourPolluted(pos))
             {
-                SetOccupant(Occupant.tree);
+                if (GetComponentInParent<GameManagerBehaviour>().SpendSeed())
+                {
+                    SetOccupant(Occupant.tree);
+                }
             }
         }
         else if (cellOccupant is FactoryOccupant)
