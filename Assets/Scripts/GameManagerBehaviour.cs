@@ -1,11 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class GameManagerBehaviour : MonoBehaviour
 {
     public Text pollutionText;
+    public UnityEvent PollutionChanged;
+    private static int seeds;
 
     // Start is called before the first frame update
     void Start()
@@ -16,12 +21,23 @@ public class GameManagerBehaviour : MonoBehaviour
         GetComponentsInChildren<GridCell>()[0].SetOccupant(GridCell.Occupant.factory);
         GetComponentsInChildren<GridCell>()[1].SetOccupant(GridCell.Occupant.factory);
         GetComponentsInChildren<GridCell>()[20].SetOccupant(GridCell.Occupant.factory);
+
+
+        if (PollutionChanged == null)
+            PollutionChanged = new UnityEvent();
+        pollutionText.text = "pollution: " + GetPollution();
+        PollutionChanged.AddListener(PollutionChangedAction);
     }
 
     // Update is called once per frame
-    void Update()
+    void PollutionChangedAction()
     {
         pollutionText.text = "pollution: " + GetPollution();
+        if (GetPollution() <= 0)
+            Debug.Log("Win");
+        if (GetPollution() >= 100)
+            Debug.Log("Lost");
+        
     }
 
     int GetPollution()
@@ -39,5 +55,21 @@ public class GameManagerBehaviour : MonoBehaviour
     bool IsWinConditionMet(int pollution)
     {
         return pollution == 0;
+    }
+
+    public void GainSeed()
+    {
+        seeds++;
+    }
+
+    public bool SpendSeed()
+    {
+        if (seeds > 0)
+        {
+            seeds--;
+            return true;
+        }
+
+        return false;
     }
 }

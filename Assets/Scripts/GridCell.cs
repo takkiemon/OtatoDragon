@@ -7,8 +7,13 @@ public class GridCell : MonoBehaviour
     ICellOccupant cellOccupant; // the type of thing that is occupying the gridcell (tree or factory)
     public enum Occupant
     {
-        factory = 0,
-        tree = 1
+        empty = 0,
+        factory = 1,
+        tree = 2
+    }
+
+    void Start()
+    {
     }
 
     public int GetPollutionCount()
@@ -25,8 +30,8 @@ public class GridCell : MonoBehaviour
 
     public void SetOccupant(Occupant type)
     {
-        if (cellOccupant == null)
-        {
+        //if (cellOccupant == null)
+        //{
             switch (type)
             {
                 case Occupant.factory:
@@ -37,22 +42,34 @@ public class GridCell : MonoBehaviour
                     cellOccupant = new TreeOccupant();
                     Instantiate((GameObject)Resources.Load("Prefabs/Tree Variant", typeof(GameObject)), transform);
                     break;
+                case Occupant.empty:
+                    if (transform.childCount > 0)
+                    {
+                        Destroy(transform.GetChild(0).gameObject);
+                    }
+                    cellOccupant = null;
+                    break;
                 default:
                     break;
             }
-        }
+        //}
+        GetComponentInParent<GameManagerBehaviour>().PollutionChanged.Invoke();
+
     }
 
     public void Interact()
     {
         if (cellOccupant == null)
         {
-            SetOccupant(Occupant.tree);
+            if (GetComponentInParent<GameManagerBehaviour>().SpendSeed())
+            {
+                SetOccupant(Occupant.tree);
+            }
         }
         else if (cellOccupant is FactoryOccupant)
         {
-            cellOccupant = null;
-            Destroy(transform.GetChild(0).gameObject);
+            SetOccupant(Occupant.empty);
+            GetComponentInParent<GameManagerBehaviour>().GainSeed();
         }
     }
 }

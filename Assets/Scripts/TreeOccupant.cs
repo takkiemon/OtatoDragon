@@ -7,6 +7,6 @@ public class TreeOccupant : ICellOccupant
     //Return the amount of polution caused by the occupying object.
     public int Pollution()
     {
-        return -10;
+        return -2;
     }
 }
