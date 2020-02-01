@@ -14,6 +14,14 @@ public class GameManagerBehaviour : MonoBehaviour
     public TextMeshProUGUI seedText;
     public Image pollutionBar;
     public UnityEvent PollutionChanged;
+    System.Random random = new System.Random();
+
+    public float minimumTimeToSpawnFactory; // in seconds
+    public float maximumTimeToSpawnFactory; // in seconds
+    public int inverseSpawnChance; // value of 20 means 1 in 20;
+    public float factorySpawnTimer; // it's public so we can check this in the editor
+    int chance;
+
     private static int seeds;
 
     // Start is called before the first frame update
@@ -32,6 +40,21 @@ public class GameManagerBehaviour : MonoBehaviour
         pollutionBar.fillAmount = GetPollution() /100f;
         seedText.text = seeds.ToString();
         PollutionChanged.AddListener(PollutionChangedAction);
+
+        System.Random random = new System.Random();
+        if (minimumTimeToSpawnFactory > maximumTimeToSpawnFactory)
+        {
+            maximumTimeToSpawnFactory = minimumTimeToSpawnFactory;
+        }
+    }
+
+    private void FixedUpdate() // the default time between calls is 0.02 seconds (50 calls per second) 
+    {
+        factorySpawnTimer++;
+        if (factorySpawnTimer >= minimumTimeToSpawnFactory * 50)
+        {
+            RollDieForFactorySpawn();
+        }
     }
 
     // Update is called once per frame
@@ -47,14 +70,14 @@ public class GameManagerBehaviour : MonoBehaviour
 
     int GetPollution()
 	{
-        int totalPolution = 0;
+        int totalPollution = 0;
         GridCell[] cellArray = this.gameObject.GetComponentsInChildren<GridCell>();
         foreach (GridCell cell in cellArray)
         {
-            totalPolution += cell.GetPollutionCount();
+            totalPollution += cell.GetPollutionCount();
         };
 
-        return totalPolution;
+        return totalPollution;
     }
 
     bool IsWinConditionMet(int pollution)
@@ -78,5 +101,24 @@ public class GameManagerBehaviour : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void RollDieForFactorySpawn() // this function checks first if it spawns or not, so I want to rename it, but I couldn't think of a better name. // CheckToSpawnFactory() // SpawnFactoryOrNot()
+    {
+        chance = random.Next(0, inverseSpawnChance);
+        if (chance == 0 || factorySpawnTimer >= maximumTimeToSpawnFactory * 50)
+        {
+            SpawnFactoryOnRandomTile();
+            factorySpawnTimer = 0;
+        }
+    }
+
+    public void SpawnFactoryOnRandomTile()
+    {
+        chance = random.Next(GetComponentsInChildren<GridCell>().Length);
+        if (GetComponentsInChildren<GridCell>()[chance].GetOccupantType() == GridCell.Occupant.empty)
+        {
+            GetComponentsInChildren<GridCell>()[chance].SetOccupant(GridCell.Occupant.factory);
+        }
     }
 }

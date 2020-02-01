@@ -12,7 +12,7 @@ public class GridCell : MonoBehaviour
         tree = 2
     }
 
-    Occupant GetOccupantType()
+    public Occupant GetOccupantType()
     {
         if (cellOccupant is TreeOccupant)
             return Occupant.tree;
@@ -23,7 +23,7 @@ public class GridCell : MonoBehaviour
 
     void Start()
     {
-        Invoke("UpgradeOccupant", Random.Range(0, 30f));
+        //Invoke("UpgradeOccupant", Random.Range(0, 30f));
     }
 
     public int GetPollutionCount()

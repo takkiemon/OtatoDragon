@@ -1763,6 +1763,10 @@ MonoBehaviour:
   PollutionChanged:
     m_PersistentCalls:
       m_Calls: []
+  minimumTimeToSpawnFactory: 1
+  maximumTimeToSpawnFactory: 3
+  inverseSpawnChance: 3
+  factorySpawnTimer: 0
 --- !u!1 &894775337
 GameObject:
   m_ObjectHideFlags: 0
