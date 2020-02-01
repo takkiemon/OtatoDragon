@@ -26,11 +26,7 @@ public class AudioManagerScript : MonoBehaviour
       return _instance;
     }
   }
-
-  void Awake()
-  {
-    DontDestroyOnLoad(gameObject);
-  }
+  
   void Start()
     {
     A_SourceSFX = gameObject.AddComponent<AudioSource>();
