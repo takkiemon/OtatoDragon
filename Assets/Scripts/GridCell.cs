@@ -9,7 +9,12 @@ public class GridCell : MonoBehaviour
     GlobalClickBehaviourPlant actionControllerPlant;
 
     ICellOccupant cellOccupant; // the type of thing that is occupying the gridcell (tree or factory)
-    public  Vector2Int pos;
+    public GameObject acornPlane;
+    public GameObject acornUIElement;
+    public Vector2Int pos;
+
+    private Vector3 ResourcePosition = new Vector3(173, 90, -2);
+
     public enum Occupant
     {
         empty = 0,
@@ -88,6 +93,8 @@ public class GridCell : MonoBehaviour
                     SetOccupant(Occupant.tree);
                     //so you cannot do this all again right away
                     actionControllerPlant.CounterToDoActionAgainPlant();
+                    var acornObject = Instantiate(acornPlane);
+                    acornObject.GetComponent<acornFeedbackBehavior>().SetValues(ResourcePosition, this.transform.position, 60.0f);
                 }
             }
         }
@@ -98,6 +105,8 @@ public class GridCell : MonoBehaviour
 
             SetOccupant(Occupant.empty);
             GetComponentInParent<GameManagerBehaviour>().GainSeed();
+            var acornObject = Instantiate(acornPlane);
+            acornObject.GetComponent<acornFeedbackBehavior>().SetValues(this.transform.position, ResourcePosition, 60.0f);
         }
     }
 

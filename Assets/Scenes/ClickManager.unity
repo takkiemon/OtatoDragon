@@ -120,6 +120,84 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &5059722
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5059723}
+  - component: {fileID: 5059725}
+  - component: {fileID: 5059724}
+  m_Layer: 5
+  m_Name: O2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5059723
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5059722}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 223605822}
+  m_Father: {fileID: 1724265217}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 155, y: 0}
+  m_SizeDelta: {x: 40, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5059724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5059722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.69803923, g: 0.83137256, b: 0.99215686, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: O
+--- !u!222 &5059725
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5059722}
+  m_CullTransparentMesh: 0
 --- !u!1 &136324323
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,6 +293,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54598c585490535459fea6bff53433f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acornPlane: {fileID: 0}
+  acornUIElement: {fileID: 0}
   pos: {x: 0, y: 0}
 --- !u!114 &136324327
 MonoBehaviour:
@@ -228,9 +308,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3144ed85854d8fe47afe109b3510aeed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorNormalTexture: {fileID: 2800000, guid: ff61266eef7b432469fc085b0cd80345, type: 3}
-  cursorHoverTexture: {fileID: 2800000, guid: cc25bcdfe9b2e4a43a4825c0acb03614, type: 3}
-  cursorClickTexture: {fileID: 2800000, guid: e1759583ee29fbf4f8f47a8a9bcbd1c2, type: 3}
+  cursorNormalTexture: {fileID: 0}
+  cursorHoverTexture: {fileID: 0}
+  cursorClickTexture: {fileID: 0}
+  acornPlane: {fileID: 0}
 --- !u!61 &136324328
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -257,6 +338,85 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
+--- !u!1 &223605821
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 223605822}
+  - component: {fileID: 223605824}
+  - component: {fileID: 223605823}
+  m_Layer: 5
+  m_Name: 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &223605822
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223605821}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5059723}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 40, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &223605823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223605821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.69803923, g: 0.83137256, b: 0.99215686, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 7
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: '2
+
+'
+--- !u!222 &223605824
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223605821}
+  m_CullTransparentMesh: 0
 --- !u!1 &363076653
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,6 +512,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54598c585490535459fea6bff53433f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acornPlane: {fileID: 0}
+  acornUIElement: {fileID: 0}
   pos: {x: 0, y: 0}
 --- !u!114 &363076657
 MonoBehaviour:
@@ -365,9 +527,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3144ed85854d8fe47afe109b3510aeed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorNormalTexture: {fileID: 2800000, guid: ff61266eef7b432469fc085b0cd80345, type: 3}
-  cursorHoverTexture: {fileID: 2800000, guid: cc25bcdfe9b2e4a43a4825c0acb03614, type: 3}
-  cursorClickTexture: {fileID: 2800000, guid: e1759583ee29fbf4f8f47a8a9bcbd1c2, type: 3}
+  cursorNormalTexture: {fileID: 0}
+  cursorHoverTexture: {fileID: 0}
+  cursorClickTexture: {fileID: 0}
+  acornPlane: {fileID: 0}
 --- !u!61 &363076658
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -489,6 +652,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54598c585490535459fea6bff53433f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acornPlane: {fileID: 0}
+  acornUIElement: {fileID: 0}
   pos: {x: 0, y: 0}
 --- !u!114 &401288994
 MonoBehaviour:
@@ -502,9 +667,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3144ed85854d8fe47afe109b3510aeed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorNormalTexture: {fileID: 2800000, guid: ff61266eef7b432469fc085b0cd80345, type: 3}
-  cursorHoverTexture: {fileID: 2800000, guid: cc25bcdfe9b2e4a43a4825c0acb03614, type: 3}
-  cursorClickTexture: {fileID: 2800000, guid: e1759583ee29fbf4f8f47a8a9bcbd1c2, type: 3}
+  cursorNormalTexture: {fileID: 0}
+  cursorHoverTexture: {fileID: 0}
+  cursorClickTexture: {fileID: 0}
+  acornPlane: {fileID: 0}
 --- !u!61 &401288995
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -531,6 +697,84 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
+--- !u!1 &423813728
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 423813729}
+  - component: {fileID: 423813731}
+  - component: {fileID: 423813730}
+  m_Layer: 5
+  m_Name: CO
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &423813729
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423813728}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 669541437}
+  m_Father: {fileID: 1724265217}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -160, y: 0}
+  m_SizeDelta: {x: 50, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &423813730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423813728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.6014125, g: 0.2741189, b: 0.754717, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: CO
+--- !u!222 &423813731
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423813728}
+  m_CullTransparentMesh: 0
 --- !u!1 &458406081
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,6 +870,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54598c585490535459fea6bff53433f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acornPlane: {fileID: 0}
+  acornUIElement: {fileID: 0}
   pos: {x: 0, y: 0}
 --- !u!114 &458406085
 MonoBehaviour:
@@ -639,9 +885,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3144ed85854d8fe47afe109b3510aeed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorNormalTexture: {fileID: 2800000, guid: ff61266eef7b432469fc085b0cd80345, type: 3}
-  cursorHoverTexture: {fileID: 2800000, guid: cc25bcdfe9b2e4a43a4825c0acb03614, type: 3}
-  cursorClickTexture: {fileID: 2800000, guid: e1759583ee29fbf4f8f47a8a9bcbd1c2, type: 3}
+  cursorNormalTexture: {fileID: 0}
+  cursorHoverTexture: {fileID: 0}
+  cursorClickTexture: {fileID: 0}
+  acornPlane: {fileID: 0}
 --- !u!61 &458406086
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -763,6 +1010,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54598c585490535459fea6bff53433f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acornPlane: {fileID: 0}
+  acornUIElement: {fileID: 0}
   pos: {x: 0, y: 0}
 --- !u!114 &462187026
 MonoBehaviour:
@@ -776,9 +1025,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3144ed85854d8fe47afe109b3510aeed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorNormalTexture: {fileID: 2800000, guid: ff61266eef7b432469fc085b0cd80345, type: 3}
-  cursorHoverTexture: {fileID: 2800000, guid: cc25bcdfe9b2e4a43a4825c0acb03614, type: 3}
-  cursorClickTexture: {fileID: 2800000, guid: e1759583ee29fbf4f8f47a8a9bcbd1c2, type: 3}
+  cursorNormalTexture: {fileID: 0}
+  cursorHoverTexture: {fileID: 0}
+  cursorClickTexture: {fileID: 0}
+  acornPlane: {fileID: 0}
 --- !u!61 &462187027
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -900,6 +1150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54598c585490535459fea6bff53433f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acornPlane: {fileID: 0}
+  acornUIElement: {fileID: 0}
   pos: {x: 0, y: 0}
 --- !u!114 &489120219
 MonoBehaviour:
@@ -913,9 +1165,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3144ed85854d8fe47afe109b3510aeed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorNormalTexture: {fileID: 2800000, guid: ff61266eef7b432469fc085b0cd80345, type: 3}
-  cursorHoverTexture: {fileID: 2800000, guid: cc25bcdfe9b2e4a43a4825c0acb03614, type: 3}
-  cursorClickTexture: {fileID: 2800000, guid: e1759583ee29fbf4f8f47a8a9bcbd1c2, type: 3}
+  cursorNormalTexture: {fileID: 0}
+  cursorHoverTexture: {fileID: 0}
+  cursorClickTexture: {fileID: 0}
+  acornPlane: {fileID: 0}
 --- !u!61 &489120220
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1117,10 +1370,7 @@ RectTransform:
   m_Children:
   - {fileID: 1306300219}
   - {fileID: 843781371}
-  - {fileID: 1238803430}
   - {fileID: 1724265217}
-  - {fileID: 681958438}
-  - {fileID: 1405552756}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1284,7 +1534,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 669019185}
   m_CullTransparentMesh: 0
---- !u!1 &681958437
+--- !u!1 &669541436
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1292,86 +1542,76 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 681958438}
-  - component: {fileID: 681958441}
-  - component: {fileID: 681958439}
-  - component: {fileID: 681958440}
+  - component: {fileID: 669541437}
+  - component: {fileID: 669541439}
+  - component: {fileID: 669541438}
   m_Layer: 5
-  m_Name: ActionTimerDestroy
-  m_TagString: ActionTimerDestroy
+  m_Name: 2
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &681958438
+--- !u!224 &669541437
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 681958437}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 669541436}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1741567388}
-  m_Father: {fileID: 608031045}
-  m_RootOrder: 4
+  m_Children: []
+  m_Father: {fileID: 423813729}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -54, y: -186}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 50, y: -25}
+  m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &681958439
+--- !u!114 &669541438
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 681958437}
+  m_GameObject: {fileID: 669541436}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae53bd6e5d92b9a46be8370efa0a89d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canIDestroy: 1
-  waitTimeDestroy: 2
---- !u!114 &681958440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 681958437}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.6014125, g: 0.2741189, b: 0.754717, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &681958441
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 7
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: '2
+
+'
+--- !u!222 &669541439
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 681958437}
+  m_GameObject: {fileID: 669541436}
   m_CullTransparentMesh: 0
 --- !u!1 &764713786
 GameObject:
@@ -1559,6 +1799,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54598c585490535459fea6bff53433f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acornPlane: {fileID: 0}
+  acornUIElement: {fileID: 0}
   pos: {x: 0, y: 0}
 --- !u!114 &790106714
 MonoBehaviour:
@@ -1572,9 +1814,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3144ed85854d8fe47afe109b3510aeed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorNormalTexture: {fileID: 2800000, guid: ff61266eef7b432469fc085b0cd80345, type: 3}
-  cursorHoverTexture: {fileID: 2800000, guid: cc25bcdfe9b2e4a43a4825c0acb03614, type: 3}
-  cursorClickTexture: {fileID: 2800000, guid: e1759583ee29fbf4f8f47a8a9bcbd1c2, type: 3}
+  cursorNormalTexture: {fileID: 0}
+  cursorHoverTexture: {fileID: 0}
+  cursorClickTexture: {fileID: 0}
+  acornPlane: {fileID: 0}
 --- !u!61 &790106715
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1696,6 +1939,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54598c585490535459fea6bff53433f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acornPlane: {fileID: 0}
+  acornUIElement: {fileID: 0}
   pos: {x: 0, y: 0}
 --- !u!114 &816584032
 MonoBehaviour:
@@ -1709,9 +1954,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3144ed85854d8fe47afe109b3510aeed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorNormalTexture: {fileID: 2800000, guid: ff61266eef7b432469fc085b0cd80345, type: 3}
-  cursorHoverTexture: {fileID: 2800000, guid: cc25bcdfe9b2e4a43a4825c0acb03614, type: 3}
-  cursorClickTexture: {fileID: 2800000, guid: e1759583ee29fbf4f8f47a8a9bcbd1c2, type: 3}
+  cursorNormalTexture: {fileID: 0}
+  cursorHoverTexture: {fileID: 0}
+  cursorClickTexture: {fileID: 0}
+  acornPlane: {fileID: 0}
 --- !u!61 &816584033
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1879,7 +2125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2920a8ae70f194253b170871592cb0a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seedObject: {fileID: 1306300218}
+  seedObject: {fileID: 0}
   seedText: {fileID: 669019187}
   pollutionBar: {fileID: 1238803431}
   PollutionChanged:
@@ -1890,6 +2136,8 @@ MonoBehaviour:
   inverseSpawnChance: 3
   factorySpawnTimer: 0
   startingPollution: 50
+  acornPlane: {fileID: 0}
+  acornUIElement: {fileID: 0}
   gridSize: 5
   gridCell: {fileID: 4489382295661177250, guid: 78e68c60f48a8544a875dc2bc02551f7,
     type: 3}
@@ -1988,6 +2236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54598c585490535459fea6bff53433f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acornPlane: {fileID: 0}
+  acornUIElement: {fileID: 0}
   pos: {x: 0, y: 0}
 --- !u!114 &894775341
 MonoBehaviour:
@@ -2001,9 +2251,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3144ed85854d8fe47afe109b3510aeed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorNormalTexture: {fileID: 2800000, guid: ff61266eef7b432469fc085b0cd80345, type: 3}
-  cursorHoverTexture: {fileID: 2800000, guid: cc25bcdfe9b2e4a43a4825c0acb03614, type: 3}
-  cursorClickTexture: {fileID: 2800000, guid: e1759583ee29fbf4f8f47a8a9bcbd1c2, type: 3}
+  cursorNormalTexture: {fileID: 0}
+  cursorHoverTexture: {fileID: 0}
+  cursorClickTexture: {fileID: 0}
+  acornPlane: {fileID: 0}
 --- !u!61 &894775342
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2125,6 +2376,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54598c585490535459fea6bff53433f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acornPlane: {fileID: 0}
+  acornUIElement: {fileID: 0}
   pos: {x: 0, y: 0}
 --- !u!114 &1014338531
 MonoBehaviour:
@@ -2138,9 +2391,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3144ed85854d8fe47afe109b3510aeed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorNormalTexture: {fileID: 2800000, guid: ff61266eef7b432469fc085b0cd80345, type: 3}
-  cursorHoverTexture: {fileID: 2800000, guid: cc25bcdfe9b2e4a43a4825c0acb03614, type: 3}
-  cursorClickTexture: {fileID: 2800000, guid: e1759583ee29fbf4f8f47a8a9bcbd1c2, type: 3}
+  cursorNormalTexture: {fileID: 0}
+  cursorHoverTexture: {fileID: 0}
+  cursorClickTexture: {fileID: 0}
+  acornPlane: {fileID: 0}
 --- !u!61 &1014338532
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2262,6 +2516,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54598c585490535459fea6bff53433f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acornPlane: {fileID: 0}
+  acornUIElement: {fileID: 0}
   pos: {x: 0, y: 0}
 --- !u!114 &1027368430
 MonoBehaviour:
@@ -2275,9 +2531,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3144ed85854d8fe47afe109b3510aeed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorNormalTexture: {fileID: 2800000, guid: ff61266eef7b432469fc085b0cd80345, type: 3}
-  cursorHoverTexture: {fileID: 2800000, guid: cc25bcdfe9b2e4a43a4825c0acb03614, type: 3}
-  cursorClickTexture: {fileID: 2800000, guid: e1759583ee29fbf4f8f47a8a9bcbd1c2, type: 3}
+  cursorNormalTexture: {fileID: 0}
+  cursorHoverTexture: {fileID: 0}
+  cursorClickTexture: {fileID: 0}
+  acornPlane: {fileID: 0}
 --- !u!61 &1027368431
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2399,6 +2656,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54598c585490535459fea6bff53433f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acornPlane: {fileID: 0}
+  acornUIElement: {fileID: 0}
   pos: {x: 0, y: 0}
 --- !u!114 &1136835189
 MonoBehaviour:
@@ -2412,9 +2671,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3144ed85854d8fe47afe109b3510aeed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorNormalTexture: {fileID: 2800000, guid: ff61266eef7b432469fc085b0cd80345, type: 3}
-  cursorHoverTexture: {fileID: 2800000, guid: cc25bcdfe9b2e4a43a4825c0acb03614, type: 3}
-  cursorClickTexture: {fileID: 2800000, guid: e1759583ee29fbf4f8f47a8a9bcbd1c2, type: 3}
+  cursorNormalTexture: {fileID: 0}
+  cursorHoverTexture: {fileID: 0}
+  cursorClickTexture: {fileID: 0}
+  acornPlane: {fileID: 0}
 --- !u!61 &1136835190
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2441,6 +2701,58 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
+--- !u!1 &1186925039
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1186925041}
+  - component: {fileID: 1186925040}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1186925040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186925039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c9c522cfcdb94c44b2412e954a32189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffects:
+  - {fileID: 8300000, guid: 39877603613f9de428b843fd81a32e5d, type: 3}
+  - {fileID: 8300000, guid: 3537d601f5e14b6429e75aa5c2213db5, type: 3}
+  - {fileID: 8300000, guid: 40770004e63a68a4cb4ec5223c47b762, type: 3}
+  - {fileID: 8300000, guid: 5dfb4a4b015da4447932cf8ea56dc2a0, type: 3}
+  - {fileID: 8300000, guid: c72759956c5685c4f82b1c695851cd34, type: 3}
+  - {fileID: 8300000, guid: 4af2bb35993c4a148803cab04841856c, type: 3}
+  mainTheme:
+  - {fileID: 8300000, guid: b5b30aab8de7a4f4ba3aa63ba31d0693, type: 3}
+--- !u!4 &1186925041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186925039}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.06629256, y: -2.0271785, z: 5.3154817}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1238803429
 GameObject:
   m_ObjectHideFlags: 0
@@ -2466,18 +2778,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1238803429}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 608031045}
-  m_RootOrder: 2
+  m_Father: {fileID: 1724265217}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -60}
-  m_SizeDelta: {x: 100, y: 40}
-  m_Pivot: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -0.000034332275}
+  m_SizeDelta: {x: 250, y: 40}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1238803431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2496,7 +2808,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8e1ccf8f13b5ebd4d937424f51c1f4e6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 02da679e06022429485d1ad8e54352ae, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2702,6 +3014,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54598c585490535459fea6bff53433f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acornPlane: {fileID: 0}
+  acornUIElement: {fileID: 0}
   pos: {x: 0, y: 0}
 --- !u!114 &1388488788
 MonoBehaviour:
@@ -2715,9 +3029,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3144ed85854d8fe47afe109b3510aeed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorNormalTexture: {fileID: 2800000, guid: ff61266eef7b432469fc085b0cd80345, type: 3}
-  cursorHoverTexture: {fileID: 2800000, guid: cc25bcdfe9b2e4a43a4825c0acb03614, type: 3}
-  cursorClickTexture: {fileID: 2800000, guid: e1759583ee29fbf4f8f47a8a9bcbd1c2, type: 3}
+  cursorNormalTexture: {fileID: 0}
+  cursorHoverTexture: {fileID: 0}
+  cursorClickTexture: {fileID: 0}
+  acornPlane: {fileID: 0}
 --- !u!61 &1388488789
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2839,6 +3154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54598c585490535459fea6bff53433f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acornPlane: {fileID: 0}
+  acornUIElement: {fileID: 0}
   pos: {x: 0, y: 0}
 --- !u!114 &1397381353
 MonoBehaviour:
@@ -2852,9 +3169,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3144ed85854d8fe47afe109b3510aeed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorNormalTexture: {fileID: 2800000, guid: ff61266eef7b432469fc085b0cd80345, type: 3}
-  cursorHoverTexture: {fileID: 2800000, guid: cc25bcdfe9b2e4a43a4825c0acb03614, type: 3}
-  cursorClickTexture: {fileID: 2800000, guid: e1759583ee29fbf4f8f47a8a9bcbd1c2, type: 3}
+  cursorNormalTexture: {fileID: 0}
+  cursorHoverTexture: {fileID: 0}
+  cursorClickTexture: {fileID: 0}
+  acornPlane: {fileID: 0}
 --- !u!61 &1397381354
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2881,95 +3199,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
---- !u!1 &1405552755
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1405552756}
-  - component: {fileID: 1405552759}
-  - component: {fileID: 1405552757}
-  - component: {fileID: 1405552758}
-  m_Layer: 5
-  m_Name: ActionTimerPlant
-  m_TagString: ActionTimerPlant
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1405552756
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1405552755}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1937929544}
-  m_Father: {fileID: 608031045}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -54, y: -300}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1405552757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1405552755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!114 &1405552758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1405552755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9258e6fc23633b4db4847019509b9c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canIPlant: 1
-  waitTimePlant: 1
---- !u!222 &1405552759
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1405552755}
-  m_CullTransparentMesh: 0
 --- !u!1 &1408021276
 GameObject:
   m_ObjectHideFlags: 0
@@ -3131,6 +3360,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54598c585490535459fea6bff53433f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acornPlane: {fileID: 0}
+  acornUIElement: {fileID: 0}
   pos: {x: 0, y: 0}
 --- !u!114 &1428302625
 MonoBehaviour:
@@ -3144,9 +3375,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3144ed85854d8fe47afe109b3510aeed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorNormalTexture: {fileID: 2800000, guid: ff61266eef7b432469fc085b0cd80345, type: 3}
-  cursorHoverTexture: {fileID: 2800000, guid: cc25bcdfe9b2e4a43a4825c0acb03614, type: 3}
-  cursorClickTexture: {fileID: 2800000, guid: e1759583ee29fbf4f8f47a8a9bcbd1c2, type: 3}
+  cursorNormalTexture: {fileID: 0}
+  cursorHoverTexture: {fileID: 0}
+  cursorClickTexture: {fileID: 0}
+  acornPlane: {fileID: 0}
 --- !u!61 &1428302626
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3268,6 +3500,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54598c585490535459fea6bff53433f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acornPlane: {fileID: 0}
+  acornUIElement: {fileID: 0}
   pos: {x: 0, y: 0}
 --- !u!114 &1470271775
 MonoBehaviour:
@@ -3281,9 +3515,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3144ed85854d8fe47afe109b3510aeed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorNormalTexture: {fileID: 2800000, guid: ff61266eef7b432469fc085b0cd80345, type: 3}
-  cursorHoverTexture: {fileID: 2800000, guid: cc25bcdfe9b2e4a43a4825c0acb03614, type: 3}
-  cursorClickTexture: {fileID: 2800000, guid: e1759583ee29fbf4f8f47a8a9bcbd1c2, type: 3}
+  cursorNormalTexture: {fileID: 0}
+  cursorHoverTexture: {fileID: 0}
+  cursorClickTexture: {fileID: 0}
+  acornPlane: {fileID: 0}
 --- !u!61 &1470271776
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3405,6 +3640,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54598c585490535459fea6bff53433f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acornPlane: {fileID: 0}
+  acornUIElement: {fileID: 0}
   pos: {x: 0, y: 0}
 --- !u!114 &1542406303
 MonoBehaviour:
@@ -3418,9 +3655,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3144ed85854d8fe47afe109b3510aeed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorNormalTexture: {fileID: 2800000, guid: ff61266eef7b432469fc085b0cd80345, type: 3}
-  cursorHoverTexture: {fileID: 2800000, guid: cc25bcdfe9b2e4a43a4825c0acb03614, type: 3}
-  cursorClickTexture: {fileID: 2800000, guid: e1759583ee29fbf4f8f47a8a9bcbd1c2, type: 3}
+  cursorNormalTexture: {fileID: 0}
+  cursorHoverTexture: {fileID: 0}
+  cursorClickTexture: {fileID: 0}
+  acornPlane: {fileID: 0}
 --- !u!61 &1542406304
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3542,6 +3780,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54598c585490535459fea6bff53433f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acornPlane: {fileID: 0}
+  acornUIElement: {fileID: 0}
   pos: {x: 0, y: 0}
 --- !u!114 &1708567734
 MonoBehaviour:
@@ -3555,9 +3795,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3144ed85854d8fe47afe109b3510aeed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorNormalTexture: {fileID: 2800000, guid: ff61266eef7b432469fc085b0cd80345, type: 3}
-  cursorHoverTexture: {fileID: 2800000, guid: cc25bcdfe9b2e4a43a4825c0acb03614, type: 3}
-  cursorClickTexture: {fileID: 2800000, guid: e1759583ee29fbf4f8f47a8a9bcbd1c2, type: 3}
+  cursorNormalTexture: {fileID: 0}
+  cursorHoverTexture: {fileID: 0}
+  cursorClickTexture: {fileID: 0}
+  acornPlane: {fileID: 0}
 --- !u!61 &1708567735
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3612,15 +3853,18 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1238803430}
+  - {fileID: 5059723}
+  - {fileID: 423813729}
   m_Father: {fileID: 608031045}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -60}
-  m_SizeDelta: {x: 100, y: 40}
-  m_Pivot: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -20}
+  m_SizeDelta: {x: 250, y: 40}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1724265218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3639,7 +3883,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3af1c4aad97e6b043870bb5be30d375d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3809791064b1a40178dbc7a90c35f1ce, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3656,83 +3900,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1724265216}
-  m_CullTransparentMesh: 0
---- !u!1 &1741567387
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1741567388}
-  - component: {fileID: 1741567390}
-  - component: {fileID: 1741567389}
-  m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1741567388
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1741567387}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 681958438}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1741567389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1741567387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 1
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Can I destroy?
---- !u!222 &1741567390
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1741567387}
   m_CullTransparentMesh: 0
 --- !u!1 &1771132854
 GameObject:
@@ -3829,6 +3996,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54598c585490535459fea6bff53433f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acornPlane: {fileID: 0}
+  acornUIElement: {fileID: 0}
   pos: {x: 0, y: 0}
 --- !u!114 &1771132858
 MonoBehaviour:
@@ -3842,9 +4011,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3144ed85854d8fe47afe109b3510aeed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorNormalTexture: {fileID: 2800000, guid: ff61266eef7b432469fc085b0cd80345, type: 3}
-  cursorHoverTexture: {fileID: 2800000, guid: cc25bcdfe9b2e4a43a4825c0acb03614, type: 3}
-  cursorClickTexture: {fileID: 2800000, guid: e1759583ee29fbf4f8f47a8a9bcbd1c2, type: 3}
+  cursorNormalTexture: {fileID: 0}
+  cursorHoverTexture: {fileID: 0}
+  cursorClickTexture: {fileID: 0}
+  acornPlane: {fileID: 0}
 --- !u!61 &1771132859
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3966,6 +4136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54598c585490535459fea6bff53433f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acornPlane: {fileID: 0}
+  acornUIElement: {fileID: 0}
   pos: {x: 0, y: 0}
 --- !u!114 &1873634561
 MonoBehaviour:
@@ -3979,9 +4151,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3144ed85854d8fe47afe109b3510aeed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorNormalTexture: {fileID: 2800000, guid: ff61266eef7b432469fc085b0cd80345, type: 3}
-  cursorHoverTexture: {fileID: 2800000, guid: cc25bcdfe9b2e4a43a4825c0acb03614, type: 3}
-  cursorClickTexture: {fileID: 2800000, guid: e1759583ee29fbf4f8f47a8a9bcbd1c2, type: 3}
+  cursorNormalTexture: {fileID: 0}
+  cursorHoverTexture: {fileID: 0}
+  cursorClickTexture: {fileID: 0}
+  acornPlane: {fileID: 0}
 --- !u!61 &1873634562
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4103,6 +4276,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54598c585490535459fea6bff53433f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acornPlane: {fileID: 0}
+  acornUIElement: {fileID: 0}
   pos: {x: 0, y: 0}
 --- !u!114 &1875473256
 MonoBehaviour:
@@ -4116,9 +4291,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3144ed85854d8fe47afe109b3510aeed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorNormalTexture: {fileID: 2800000, guid: ff61266eef7b432469fc085b0cd80345, type: 3}
-  cursorHoverTexture: {fileID: 2800000, guid: cc25bcdfe9b2e4a43a4825c0acb03614, type: 3}
-  cursorClickTexture: {fileID: 2800000, guid: e1759583ee29fbf4f8f47a8a9bcbd1c2, type: 3}
+  cursorNormalTexture: {fileID: 0}
+  cursorHoverTexture: {fileID: 0}
+  cursorClickTexture: {fileID: 0}
+  acornPlane: {fileID: 0}
 --- !u!61 &1875473257
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4240,6 +4416,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54598c585490535459fea6bff53433f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acornPlane: {fileID: 0}
+  acornUIElement: {fileID: 0}
   pos: {x: 0, y: 0}
 --- !u!114 &1896463573
 MonoBehaviour:
@@ -4253,9 +4431,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3144ed85854d8fe47afe109b3510aeed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorNormalTexture: {fileID: 2800000, guid: ff61266eef7b432469fc085b0cd80345, type: 3}
-  cursorHoverTexture: {fileID: 2800000, guid: cc25bcdfe9b2e4a43a4825c0acb03614, type: 3}
-  cursorClickTexture: {fileID: 2800000, guid: e1759583ee29fbf4f8f47a8a9bcbd1c2, type: 3}
+  cursorNormalTexture: {fileID: 0}
+  cursorHoverTexture: {fileID: 0}
+  cursorClickTexture: {fileID: 0}
+  acornPlane: {fileID: 0}
 --- !u!61 &1896463574
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4377,6 +4556,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54598c585490535459fea6bff53433f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acornPlane: {fileID: 0}
+  acornUIElement: {fileID: 0}
   pos: {x: 0, y: 0}
 --- !u!114 &1909376594
 MonoBehaviour:
@@ -4390,9 +4571,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3144ed85854d8fe47afe109b3510aeed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorNormalTexture: {fileID: 2800000, guid: ff61266eef7b432469fc085b0cd80345, type: 3}
-  cursorHoverTexture: {fileID: 2800000, guid: cc25bcdfe9b2e4a43a4825c0acb03614, type: 3}
-  cursorClickTexture: {fileID: 2800000, guid: e1759583ee29fbf4f8f47a8a9bcbd1c2, type: 3}
+  cursorNormalTexture: {fileID: 0}
+  cursorHoverTexture: {fileID: 0}
+  cursorClickTexture: {fileID: 0}
+  acornPlane: {fileID: 0}
 --- !u!61 &1909376595
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4419,83 +4601,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
---- !u!1 &1937929543
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1937929544}
-  - component: {fileID: 1937929546}
-  - component: {fileID: 1937929545}
-  m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1937929544
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1937929543}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1405552756}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1937929545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1937929543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 1
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Can I plant?
---- !u!222 &1937929546
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1937929543}
-  m_CullTransparentMesh: 0
 --- !u!1 &2000755722
 GameObject:
   m_ObjectHideFlags: 0
@@ -4591,6 +4696,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54598c585490535459fea6bff53433f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acornPlane: {fileID: 0}
+  acornUIElement: {fileID: 0}
   pos: {x: 0, y: 0}
 --- !u!114 &2000755726
 MonoBehaviour:
@@ -4604,9 +4711,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3144ed85854d8fe47afe109b3510aeed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorNormalTexture: {fileID: 2800000, guid: ff61266eef7b432469fc085b0cd80345, type: 3}
-  cursorHoverTexture: {fileID: 2800000, guid: cc25bcdfe9b2e4a43a4825c0acb03614, type: 3}
-  cursorClickTexture: {fileID: 2800000, guid: e1759583ee29fbf4f8f47a8a9bcbd1c2, type: 3}
+  cursorNormalTexture: {fileID: 0}
+  cursorHoverTexture: {fileID: 0}
+  cursorClickTexture: {fileID: 0}
+  acornPlane: {fileID: 0}
 --- !u!61 &2000755727
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4705,10 +4813,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4489382295661177262, guid: 78e68c60f48a8544a875dc2bc02551f7,
-        type: 3}
-      propertyPath: actionTimer
-      value: 
-      objectReference: {fileID: 681958440}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78e68c60f48a8544a875dc2bc02551f7, type: 3}
