@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class GridCell : MonoBehaviour
 {
+    //gotta reference to the globalclickcontroller
+    GlobalClickBehaviourDestroy actionControllerDestroy;
+    GlobalClickBehaviourPlant actionControllerPlant;
+
     ICellOccupant cellOccupant; // the type of thing that is occupying the gridcell (tree or factory)
     public  Vector2Int pos;
     public enum Occupant
@@ -24,6 +28,10 @@ public class GridCell : MonoBehaviour
 
     void Start()
     {
+        //das referencesssss
+        actionControllerDestroy = GameObject.FindGameObjectWithTag("ActionTimerDestroy").GetComponent<GlobalClickBehaviourDestroy>();
+        actionControllerPlant = GameObject.FindGameObjectWithTag("ActionTimerPlant").GetComponent<GlobalClickBehaviourPlant>();
+
         //Invoke("UpgradeOccupant", Random.Range(0, 30f));
     }
 
@@ -71,18 +79,23 @@ public class GridCell : MonoBehaviour
 
     public void Interact()
     {
-        if (cellOccupant == null)
+        if (cellOccupant == null && actionControllerPlant.canIPlant)
         {
             if (!GetComponentInParent<GameManagerBehaviour>().NeighbourPolluted(pos))
             {
                 if (GetComponentInParent<GameManagerBehaviour>().SpendSeed())
                 {
                     SetOccupant(Occupant.tree);
+                    //so you cannot do this all again right away
+                    actionControllerPlant.CounterToDoActionAgainPlant();
                 }
             }
         }
-        else if (cellOccupant is FactoryOccupant)
+        else if (cellOccupant is FactoryOccupant && actionControllerDestroy.canIDestroy)
         {
+            //so you cannot do this all again right away
+            actionControllerDestroy.CounterToDoActionAgainDestroy();
+
             SetOccupant(Occupant.empty);
             GetComponentInParent<GameManagerBehaviour>().GainSeed();
         }

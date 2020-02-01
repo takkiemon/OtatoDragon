@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ClickBehaviour : MonoBehaviour
 {
@@ -10,16 +11,13 @@ public class ClickBehaviour : MonoBehaviour
 
     private Color startcolor;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    GlobalClickBehaviourDestroy actionControllerDestroy;
+    GlobalClickBehaviourPlant actionControllerPlant;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        actionControllerDestroy = GameObject.FindGameObjectWithTag("ActionTimerDestroy").GetComponent<GlobalClickBehaviourDestroy>();
+        actionControllerPlant = GameObject.FindGameObjectWithTag("ActionTimerPlant").GetComponent<GlobalClickBehaviourPlant>();
     }
 
     void OnMouseDown()
@@ -35,7 +33,16 @@ public class ClickBehaviour : MonoBehaviour
         Cursor.SetCursor(cursorHoverTexture, Vector2.zero, CursorMode.Auto);
 
         startcolor = GetComponent<Renderer>().material.color;
-        GetComponent<Renderer>().material.color = Color.yellow;
+
+        //changes colour depending if you can do an action
+        if (actionControllerDestroy.canIDestroy || actionControllerPlant.canIPlant)
+        {
+            GetComponent<Renderer>().material.color = Color.green;
+        }
+        else if(!actionControllerDestroy.canIDestroy || !actionControllerPlant.canIPlant)
+        {
+            GetComponent<Renderer>().material.color = Color.red;
+        }
     }
     
     //undoes the highlight to the original
