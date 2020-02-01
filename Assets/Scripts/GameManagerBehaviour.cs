@@ -10,7 +10,6 @@ using TMPro;
 
 public class GameManagerBehaviour : MonoBehaviour
 {
-    public Text pollutionText;
     public TextMeshProUGUI seedText;
     public Image pollutionBar;
     public UnityEvent PollutionChanged;
@@ -29,8 +28,7 @@ public class GameManagerBehaviour : MonoBehaviour
 
         if (PollutionChanged == null)
             PollutionChanged = new UnityEvent();
-        pollutionText.text = "pollution: " + GetPollution();
-        pollutionBar.fillAmount = GetPollution() /100;
+        pollutionBar.fillAmount = GetPollution() /100f;
         seedText.text = seeds.ToString();
         PollutionChanged.AddListener(PollutionChangedAction);
     }
@@ -40,7 +38,6 @@ public class GameManagerBehaviour : MonoBehaviour
     {
 
         pollutionBar.fillAmount = GetPollution() / 100f;
-        pollutionText.text = "pollution: " + GetPollution();
         if (GetPollution() <= 0)
             Debug.Log("Win");
         if (GetPollution() >= 100)
