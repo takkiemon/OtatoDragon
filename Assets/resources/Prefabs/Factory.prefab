@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2234323187355552775}
+  - component: {fileID: -3493889649982633023}
   - component: {fileID: 2234323187355552774}
   m_Layer: 0
   m_Name: Factory
@@ -31,6 +32,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-3493889649982633023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2234323187355552772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f8559e294b156549b013bbd731ddbce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  render: {fileID: 0}
+  treeTiers:
+  - {fileID: 21300000, guid: c28b609dbbfe9aa4dacfc48ff9b8fb5e, type: 3}
+  - {fileID: 21300000, guid: ff15bb710b31cdd4ab67081b174a6482, type: 3}
+  - {fileID: 21300000, guid: 3da76f5e71268ea45977d6d2efed7691, type: 3}
+  factoryTiers:
+  - {fileID: 21300000, guid: a2d0b9f9b560f5c4cb748001461407a0, type: 3}
+  - {fileID: 21300000, guid: 27c77c2a4f97ce04f9bfee64934cb667, type: 3}
+  - {fileID: 21300000, guid: d81b0be43200a6a40a7db4b51d920ea3, type: 3}
+  startTime: 5
+  repeatTime: 5
+  isTree: 0
 --- !u!212 &2234323187355552774
 SpriteRenderer:
   m_ObjectHideFlags: 0
