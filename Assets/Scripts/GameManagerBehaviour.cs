@@ -23,6 +23,9 @@ public class GameManagerBehaviour : MonoBehaviour
     public int startingPollution;
     int chance;
 
+    public GameObject acornPlane;
+    public GameObject acornUIElement;
+
     private int seeds;
 
     private GridCell[,] grid;
@@ -59,6 +62,8 @@ public class GameManagerBehaviour : MonoBehaviour
         {
             maximumTimeToSpawnFactory = minimumTimeToSpawnFactory;
         }
+
+        SetGridCellValues();
     }
 
     private void FixedUpdate() // the default time between calls is 0.02 seconds (50 calls per second) 
@@ -132,6 +137,15 @@ public class GameManagerBehaviour : MonoBehaviour
         } else if (GetComponentsInChildren<GridCell>()[chance].GetOccupantType() == GridCell.Occupant.factory)
         {
             GetComponentsInChildren<GridCell>()[chance].UpgradeOccupant();
+        }
+    }
+
+    public void SetGridCellValues()
+    {
+        foreach (GridCell cell in GetComponentsInChildren<GridCell>())
+        {
+            cell.acornPlane = this.acornPlane;
+            cell.acornUIElement = this.acornUIElement;
         }
     }
 
