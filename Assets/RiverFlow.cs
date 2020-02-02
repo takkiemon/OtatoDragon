@@ -21,6 +21,6 @@ public class RiverFlow : MonoBehaviour
         flowImage.fillAmount+=0.01f;
         if (flowImage.fillAmount >= 1f)
             flowImage.fillAmount = 0;
-        //PollutionImage.fillAmount = gameManager.GetRiverPolution();
+        PollutionImage.fillAmount = gameManager.GetRiverPolution();
     }
 }
