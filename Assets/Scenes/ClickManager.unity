@@ -2749,6 +2749,73 @@ GameObject:
   - component: {fileID: 1306300221}
   - component: {fileID: 1306300220}
   - component: {fileID: 1306300222}
+  - component: {fileID: 1186925041}
+  - component: {fileID: 1186925040}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1186925040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186925039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c9c522cfcdb94c44b2412e954a32189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffects:
+  - {fileID: 8300000, guid: 39877603613f9de428b843fd81a32e5d, type: 3}
+  - {fileID: 8300000, guid: 3537d601f5e14b6429e75aa5c2213db5, type: 3}
+  - {fileID: 8300000, guid: 40770004e63a68a4cb4ec5223c47b762, type: 3}
+  - {fileID: 8300000, guid: 5dfb4a4b015da4447932cf8ea56dc2a0, type: 3}
+  - {fileID: 8300000, guid: c72759956c5685c4f82b1c695851cd34, type: 3}
+  - {fileID: 8300000, guid: 4af2bb35993c4a148803cab04841856c, type: 3}
+  mainTheme:
+  - {fileID: 8300000, guid: b463c839c58045a4a834194c24933597, type: 3}
+  - {fileID: 8300000, guid: b463c839c58045a4a834194c24933597, type: 3}
+  - {fileID: 8300000, guid: b463c839c58045a4a834194c24933597, type: 3}
+  - {fileID: 8300000, guid: 497ce24bbfe61c740af9602d547d75e5, type: 3}
+  - {fileID: 8300000, guid: 497ce24bbfe61c740af9602d547d75e5, type: 3}
+  - {fileID: 8300000, guid: 497ce24bbfe61c740af9602d547d75e5, type: 3}
+  - {fileID: 8300000, guid: 46d0a0d595d4c08409aaf80b57a0ce3f, type: 3}
+  - {fileID: 8300000, guid: 46d0a0d595d4c08409aaf80b57a0ce3f, type: 3}
+  - {fileID: 8300000, guid: 46d0a0d595d4c08409aaf80b57a0ce3f, type: 3}
+  gameManagerBehaviour: {fileID: 887558579}
+  lightPollutionTreshold: 40
+  mediumPollutionTreshold: 70
+  highPollutionTreshold: 100
+--- !u!4 &1186925041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186925039}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.06629256, y: -2.0271785, z: 5.3154817}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1238803429
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1238803430}
+  - component: {fileID: 1238803432}
+  - component: {fileID: 1238803431}
   m_Layer: 5
   m_Name: Seeds
   m_TagString: Untagged

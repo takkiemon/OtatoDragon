@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
@@ -100,7 +100,11 @@ public class GameManagerBehaviour : MonoBehaviour
         }
     }
 
-    float GetPollution()
+
+   public float GetPollution()
+
+
+
 	{
         float totalPollution = startingPollution;
         GridCell[] cellArray = this.gameObject.GetComponentsInChildren<GridCell>();
