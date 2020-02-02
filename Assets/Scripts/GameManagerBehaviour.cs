@@ -19,7 +19,7 @@ public class GameManagerBehaviour : MonoBehaviour
 
     public float minimumTimeToSpawnFactory; // in seconds
     public float maximumTimeToSpawnFactory; // in seconds
-    public int inverseSpawnChance; // value of 20 means 1 in 20;
+    public float currentTimeToSpawnFactory; // in seconds
     public float factorySpawnTimer; // it's public so we can check this in the editor
     public int startingPollution;
     int chance;
@@ -71,11 +71,11 @@ public class GameManagerBehaviour : MonoBehaviour
         seedText.text = seeds.ToString();
         PollutionChanged.AddListener(PollutionChangedAction);
 
-        System.Random random = new System.Random();
         if (minimumTimeToSpawnFactory > maximumTimeToSpawnFactory)
         {
             maximumTimeToSpawnFactory = minimumTimeToSpawnFactory;
         }
+        currentTimeToSpawnFactory = UnityEngine.Random.Range(minimumTimeToSpawnFactory, maximumTimeToSpawnFactory);
 
         SetGridCellValues();
     }
@@ -83,9 +83,11 @@ public class GameManagerBehaviour : MonoBehaviour
     private void FixedUpdate() // the default time between calls is 0.02 seconds (50 calls per second) 
     {
         factorySpawnTimer++;
-        if (factorySpawnTimer >= minimumTimeToSpawnFactory * 50)
+        if (factorySpawnTimer >= currentTimeToSpawnFactory * 50)
         {
-            RollDieForFactorySpawn();
+            currentTimeToSpawnFactory = UnityEngine.Random.Range(minimumTimeToSpawnFactory, maximumTimeToSpawnFactory);
+            factorySpawnTimer = 0;
+            SpawnFactoryOnRandomTile();
         }
     }
 
@@ -140,16 +142,6 @@ public class GameManagerBehaviour : MonoBehaviour
         {
             seedObject.GetComponent<BlinkBehaviour>().BlinkRed();
             return false;
-        }
-    }
-
-    public void RollDieForFactorySpawn() // this function checks first if it spawns or not, so I want to rename it, but I couldn't think of a better name. // CheckToSpawnFactory() // SpawnFactoryOrNot()
-    {
-        chance = random.Next(0, inverseSpawnChance);
-        if (chance == 0 || factorySpawnTimer >= maximumTimeToSpawnFactory * 50)
-        {
-            SpawnFactoryOnRandomTile();
-            factorySpawnTimer = 0;
         }
     }
 
