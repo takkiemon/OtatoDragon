@@ -103,6 +103,9 @@ public class GridCell : MonoBehaviour
                     actionController.CounterToDoActionAgain(3);
                     var acornObject = Instantiate(acornPlane);
                     acornObject.GetComponent<acornFeedbackBehavior>().SetValues(ResourcePosition, this.transform.position, 60.0f);
+
+                    //sound of planting seed
+                    GameObject.Find("AudioManager").GetComponent<AudioManagerScript>().PlaySoundEffects("plantTree");
                 }
             }
         }
@@ -112,6 +115,10 @@ public class GridCell : MonoBehaviour
             actionController.CounterToDoActionAgain(5);
 
             SetOccupant(Occupant.empty);
+
+            //sound of destroying a factory
+            GameObject.Find("AudioManager").GetComponent<AudioManagerScript>().PlaySoundEffects("factoryDestroy");
+
             GetComponentInParent<GameManagerBehaviour>().GainSeed();
             var acornObject = Instantiate(acornPlane);
             acornObject.GetComponent<acornFeedbackBehavior>().SetValues(this.transform.position, ResourcePosition, 60.0f);
