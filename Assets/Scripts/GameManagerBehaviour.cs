@@ -55,7 +55,7 @@ public class GameManagerBehaviour : MonoBehaviour
         river.Add(new KeyValuePair<GridCell, float>(grid[4, 4], 0.75f));
         river.Add(new KeyValuePair<GridCell, float>(grid[4, 3],0.68f));
         river.Add(new KeyValuePair<GridCell, float>(grid[5, 3],0.58f));
-        river.Add(new KeyValuePair<GridCell, float>(grid[5, 2],052f));
+        river.Add(new KeyValuePair<GridCell, float>(grid[5, 2],0.52f));
         river.Add(new KeyValuePair<GridCell, float>(grid[4, 2],0.45f));
         river.Add(new KeyValuePair<GridCell, float>(grid[3,1],0.4f));
         river.Add(new KeyValuePair<GridCell, float>(grid[2, 1],0.36f));
