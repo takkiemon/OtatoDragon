@@ -163,9 +163,14 @@ public class GameManagerBehaviour : MonoBehaviour
         if (GetComponentsInChildren<GridCell>()[chance].GetOccupantType() == GridCell.Occupant.empty)
         {
             GetComponentsInChildren<GridCell>()[chance].SetOccupant(GridCell.Occupant.factory);
+            //sound that a factory spawns
+            GameObject.Find("AudioManager").GetComponent<AudioManagerScript>().PlaySoundEffects("factorySpawn");
+
         } else if (GetComponentsInChildren<GridCell>()[chance].GetOccupantType() == GridCell.Occupant.factory)
         {
             GetComponentsInChildren<GridCell>()[chance].UpgradeOccupant();
+            //sound of upgrading factory
+            GameObject.Find("AudioManager").GetComponent<AudioManagerScript>().PlaySoundEffects("factoryTierUp");
         }
     }
 
