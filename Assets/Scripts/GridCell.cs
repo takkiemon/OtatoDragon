@@ -102,14 +102,9 @@ public class GridCell : MonoBehaviour
                     Invoke("SetTreeOccupant", 3);
                     //so you cannot do this all again right away
                     actionController.CounterToDoActionAgain(3);
-<<<<<<< HEAD
-                    var acornObject = Instantiate(acornPlane);
 
-                    acornObject.GetComponent<acornFeedbackBehavior>().SetValues(ResourcePosition, this.transform.position, 60.0f);
-=======
                     var dropletObject = Instantiate(dropletPlane);
                     dropletObject.GetComponent<dropletFeedbackBehavior>().SetValues(ResourcePosition, this.transform.position, 100.0f);
->>>>>>> feature/changeSeedsToWater
                 }
             }
         }
