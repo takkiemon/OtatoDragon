@@ -101,7 +101,7 @@ public class GridCell : MonoBehaviour
                     //so you cannot do this all again right away
                     actionController.CounterToDoActionAgain(3);
                     var dropletObject = Instantiate(dropletPlane);
-                    dropletObject.GetComponent<dropletFeedbackBehavior>().SetValues(ResourcePosition, this.transform.position, 60.0f);
+                    dropletObject.GetComponent<dropletFeedbackBehavior>().SetValues(ResourcePosition, this.transform.position, 100.0f);
                 }
             }
         }
@@ -113,7 +113,7 @@ public class GridCell : MonoBehaviour
             SetOccupant(Occupant.empty);
             GetComponentInParent<GameManagerBehaviour>().GainSeed();
             var droplet = Instantiate(dropletPlane);
-            droplet.GetComponent<dropletFeedbackBehavior>().SetValues(this.transform.position, ResourcePosition, 60.0f);
+            droplet.GetComponent<dropletFeedbackBehavior>().SetValues(this.transform.position, ResourcePosition, 100.0f);
         }
     }
 
