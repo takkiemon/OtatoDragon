@@ -175,18 +175,19 @@ public class GameManagerBehaviour : MonoBehaviour
 
     public bool NeighbourPolluted(Vector2Int pos)
     {
-        if (pos.x > 0)
-            if (grid[pos.x - 1, pos.y].GetOccupantType() == GridCell.Occupant.factory)
-                return true;
-        if (pos.x< gridSize-1)
-            if (grid[pos.x + 1, pos.y].GetOccupantType() == GridCell.Occupant.factory)
-                return true;
-        if (pos.y > 0)
-            if (grid[pos.x, pos.y - 1].GetOccupantType() == GridCell.Occupant.factory)
-                return true;
-        if (pos.y < gridSize -1)
-            if (grid[pos.x, pos.y + 1].GetOccupantType() == GridCell.Occupant.factory)
-                return true;
+        // Temporarily
+        //if (pos.x > 0)
+        //    if (grid[pos.x - 1, pos.y].GetOccupantType() == GridCell.Occupant.factory)
+        //        return true;
+        //if (pos.x< gridSize-1)
+        //    if (grid[pos.x + 1, pos.y].GetOccupantType() == GridCell.Occupant.factory)
+        //        return true;
+        //if (pos.y > 0)
+        //    if (grid[pos.x, pos.y - 1].GetOccupantType() == GridCell.Occupant.factory)
+        //        return true;
+        //if (pos.y < gridSize -1)
+        //    if (grid[pos.x, pos.y + 1].GetOccupantType() == GridCell.Occupant.factory)
+        //        return true;
         return false;
     }
 
