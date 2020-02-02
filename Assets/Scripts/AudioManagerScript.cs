@@ -6,7 +6,7 @@ using UnityEngine;
 public class AudioManagerScript : MonoBehaviour
 {
   private AudioSource A_SourceSFX;
-  private AudioSource[] A_SourceMainThemeArray;
+  public AudioSource[] A_SourceMainThemeArray;
 
   public AudioClip[] soundEffects;
   public AudioClip[] mainTheme;
@@ -15,6 +15,11 @@ public class AudioManagerScript : MonoBehaviour
   public Dictionary<string, AudioClip>SoundEffectsDictionary;
 
   public GameManagerBehaviour gameManagerBehaviour;
+
+
+  private float beatsPerMinute, beatsPerSecond, beatsPerTwoBars, secondsPerTwoBar, twoBarFixedSecond;
+
+  public int lightPollutionTreshold, mediumPollutionTreshold, highPollutionTreshold;
 
   public static AudioManagerScript Instance
   {
@@ -31,12 +36,15 @@ public class AudioManagerScript : MonoBehaviour
   
   void Start()
     {
+    beatsPerMinute = 96; //a 16 bar loop with this bpm is a steady 10 seconds
+    twoBarFixedSecond = 0;
     A_SourceSFX = gameObject.AddComponent<AudioSource>();
 
-    for (int i = 0; i < 9; i++)
-    {
-      A_SourceMainThemeArray[i] = gameObject.AddComponent<AudioSource>();
-    }
+    //for (int i = 0; i < 9; i++)
+    //{
+    //  A_SourceMainThemeArray[i] = new AudioSource();
+    //  A_SourceMainThemeArray[i]  = gameObject.AddComponent<AudioSource>();
+    //}
 
     SoundEffectsDictionary = new Dictionary<string, AudioClip>();
     AddSoundEffectsToDictionary();
@@ -45,6 +53,48 @@ public class AudioManagerScript : MonoBehaviour
    // PlayMainTheme("NotInteractive", 0); // REMOVE WHEN INTERACTIVE SOUNDTRACK
   }
 
+  private void FixedUpdate() // called every 0.02
+  {
+
+    //10(16 bars is 10 seconds) * 50 = 500
+    if (twoBarFixedSecond < 500)
+    {
+      twoBarFixedSecond += 1;
+    }
+    else if (twoBarFixedSecond == 500)
+    {
+
+      //check pollution level //TODO: make it so that you  know the previous level of pollution and know which one of the 9 to get
+
+      //play light theme 
+      if (gameManagerBehaviour.GetPollution() < lightPollutionTreshold)
+      {
+
+       //light theme is 0-2 
+        SetVolumeMainThemeToMax(0);
+      }
+      else if   //play med theme theme 
+      (gameManagerBehaviour.GetPollution() < mediumPollutionTreshold)
+      {
+        //medium theme is 3-5
+        SetVolumeMainThemeToMax(3);
+      }
+      else if   //play high theme theme 
+   (gameManagerBehaviour.GetPollution() < highPollutionTreshold)
+      {
+        //high theme is 6-8
+        SetVolumeMainThemeToMax(6);
+      }
+      twoBarFixedSecond = 0;
+    }
+    else
+    {
+      twoBarFixedSecond = 0;
+    }
+    
+   // Time.fixedTime;
+
+  }
   private void PlayInteractiveThemeSilentInBackground()
   {
     for (int i = 0; i < 9; i++) //: light 1-3; medium 4-6; high 7-9
@@ -52,6 +102,7 @@ public class AudioManagerScript : MonoBehaviour
       PlayMainTheme(i);
       A_SourceMainThemeArray[i].volume = 0f;
     }
+    twoBarFixedSecond = 500;
   }
 
   public void PlaySoundEffects(string soundEffectName)
@@ -67,15 +118,16 @@ public class AudioManagerScript : MonoBehaviour
 
   public void PlayMainTheme(int audioSourceIndex)
   {
-    if (!A_SourceMainThemeArray[audioSourceIndex].isPlaying)
-    {
       A_SourceMainThemeArray[audioSourceIndex].loop = true;
       A_SourceMainThemeArray[audioSourceIndex].clip = mainTheme[audioSourceIndex];
-      A_SourceMainThemeArray[audioSourceIndex].Play();
-    }
+      A_SourceMainThemeArray[audioSourceIndex].Play();  
   }
   public void SetVolumeMainThemeToMax(int audioSourceIndex)
   {
+    for (int i = 0; i < A_SourceMainThemeArray.Length; i++)
+    {
+      A_SourceMainThemeArray[i].volume = 0f;
+    }
     A_SourceMainThemeArray[audioSourceIndex].volume = 1f;
   }
 
@@ -83,25 +135,6 @@ public class AudioManagerScript : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    
-    //play light theme 
-    if (gameManagerBehaviour.GetPollution() < 50)
-    {
-      // do shit so it plays after X seconds
-    }
-    else if   //play med theme theme 
-    (gameManagerBehaviour.GetPollution() < 80)
-      {
-      // do shit so it plays after X seconds
-      }
-    else if   //play high theme theme 
- (gameManagerBehaviour.GetPollution() < 100)
-    {
-      // do shit so it plays after X seconds
-    }
-
-
-
   }
 
   private void AddSoundEffectsToDictionary()
