@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
@@ -28,22 +29,38 @@ public class GameManagerBehaviour : MonoBehaviour
     private GridCell[,] grid;
     public int gridSize = 5;
     public GameObject gridCell;
+    private List<KeyValuePair<GridCell,float>> river;
 
     // Start is called before the first frame update
     void Start()
     {
+        river = new List<KeyValuePair<GridCell, float>>();
         grid = new GridCell[gridSize,gridSize];
 
         for (int x = 0; x < gridSize; x++)
         {
             for (int y = 0; y < gridSize; y++)
             {
-                grid[x, y] = Instantiate(gridCell, new Vector3(50 * x - 25 * gridSize, 25*y - 12.5f*gridSize,0), new Quaternion(), transform)
+                grid[x, y] = Instantiate(gridCell, new Vector3(50 * x - 25 * (gridSize-1), 25*y - 12.5f*(gridSize-1),0), new Quaternion(), transform)
                     .GetComponent<GridCell>();
                 grid[x,y].pos = new Vector2Int(x,y);
             }
         }
 
+        /*river.Add(grid[5, 5],);
+        river.Add(grid[4, 5]);
+        river.Add(grid[4, 4]);
+        river.Add(grid[4, 3]);
+        river.Add(grid[5, 3]);
+        river.Add(grid[5, 2]);
+        river.Add(grid[4, 2]);
+        river.Add(grid[3, 2]);
+        river.Add(grid[2, 2]);
+        river.Add(grid[2, 1]);
+        river.Add(grid[1, 1]);
+        river.Add(grid[1, 0]);
+        river.Add(grid[0, 1]);
+        river.Add(grid[0, 0]);*/
 
         for (int i = 0; i < 3; i++)
             SpawnFactoryOnRandomTile();
@@ -81,7 +98,7 @@ public class GameManagerBehaviour : MonoBehaviour
         }
     }
 
-    int GetPollution()
+    float GetPollution()
 	{
         int totalPollution = startingPollution;
         GridCell[] cellArray = this.gameObject.GetComponentsInChildren<GridCell>();
@@ -150,5 +167,21 @@ public class GameManagerBehaviour : MonoBehaviour
             if (grid[pos.x, pos.y + 1].GetOccupantType() == GridCell.Occupant.factory)
                 return true;
         return false;
+    }
+
+    public float GetRiverPolution()
+    {
+        float polStart = 0;
+        /*for (int i = 0; i < river.Count; i++)
+        {
+            if (river[i].GetOccupantType() == GridCell.Occupant.factory)
+            {
+                polStart = (float)river[i].pos.y / gridSize;
+                break;
+            }
+                
+        }*/
+
+        return polStart;
     }
 }
