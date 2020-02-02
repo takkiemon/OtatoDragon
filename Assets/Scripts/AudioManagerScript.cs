@@ -6,13 +6,15 @@ using UnityEngine;
 public class AudioManagerScript : MonoBehaviour
 {
   private AudioSource A_SourceSFX;
-  private AudioSource A_SourceMainTheme;
+  private AudioSource[] A_SourceMainThemeArray;
 
   public AudioClip[] soundEffects;
   public AudioClip[] mainTheme;
   private static AudioManagerScript _instance;
 
   public Dictionary<string, AudioClip>SoundEffectsDictionary;
+
+  public GameManagerBehaviour gameManagerBehaviour;
 
   public static AudioManagerScript Instance
   {
@@ -30,19 +32,30 @@ public class AudioManagerScript : MonoBehaviour
   void Start()
     {
     A_SourceSFX = gameObject.AddComponent<AudioSource>();
-    A_SourceMainTheme = gameObject.AddComponent<AudioSource>();
-    SoundEffectsDictionary = new Dictionary<string, AudioClip>();
 
+    for (int i = 0; i < 9; i++)
+    {
+      A_SourceMainThemeArray[i] = gameObject.AddComponent<AudioSource>();
+    }
+
+    SoundEffectsDictionary = new Dictionary<string, AudioClip>();
     AddSoundEffectsToDictionary();
 
-    PlayMainTheme("NotInteractive", 0); // REMOVE WHEN INTERACTIVE SOUNDTRACK
+    PlayInteractiveThemeSilentInBackground();
+   // PlayMainTheme("NotInteractive", 0); // REMOVE WHEN INTERACTIVE SOUNDTRACK
   }
 
- 
+  private void PlayInteractiveThemeSilentInBackground()
+  {
+    for (int i = 0; i < 9; i++) //: light 1-3; medium 4-6; high 7-9
+    {
+      PlayMainTheme(i);
+      A_SourceMainThemeArray[i].volume = 0f;
+    }
+  }
 
   public void PlaySoundEffects(string soundEffectName)
   {
-
     //Stop any playing music
     //A_Source.Stop();
     AudioClip audioClip;
@@ -52,36 +65,44 @@ public class AudioManagerScript : MonoBehaviour
     }
   }
 
-  public void PlayMainTheme(string pollutionlevel, int TrackID)
+  public void PlayMainTheme(int audioSourceIndex)
   {
-    switch (pollutionlevel)
+    if (!A_SourceMainThemeArray[audioSourceIndex].isPlaying)
     {
-      case "Light":
-        A_SourceMainTheme.PlayOneShot(mainTheme[TrackID]);
-        break;
-      case "Medium":
-        A_SourceMainTheme.PlayOneShot(mainTheme[TrackID]);
-        break;
-      case "High":
-        A_SourceMainTheme.PlayOneShot(mainTheme[TrackID]);
-        break;
-      case "NotInteractive":
-        A_SourceMainTheme.loop = true;
-        A_SourceMainTheme.clip = mainTheme[TrackID];
-        A_SourceMainTheme.Play();
-        break;
-      default:
-    //    A_SourceMainTheme.PlayOneShot(Clip_00);
-        break;
+      A_SourceMainThemeArray[audioSourceIndex].loop = true;
+      A_SourceMainThemeArray[audioSourceIndex].clip = mainTheme[audioSourceIndex];
+      A_SourceMainThemeArray[audioSourceIndex].Play();
     }
+  }
+  public void SetVolumeMainThemeToMax(int audioSourceIndex)
+  {
+    A_SourceMainThemeArray[audioSourceIndex].volume = 1f;
   }
 
 
   // Update is called once per frame
   void Update()
+  {
+    
+    //play light theme 
+    if (gameManagerBehaviour.GetPollution() < 50)
     {
-   
-}
+      // do shit so it plays after X seconds
+    }
+    else if   //play med theme theme 
+    (gameManagerBehaviour.GetPollution() < 80)
+      {
+      // do shit so it plays after X seconds
+      }
+    else if   //play high theme theme 
+ (gameManagerBehaviour.GetPollution() < 100)
+    {
+      // do shit so it plays after X seconds
+    }
+
+
+
+  }
 
   private void AddSoundEffectsToDictionary()
   {
