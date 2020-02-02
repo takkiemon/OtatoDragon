@@ -112,6 +112,7 @@ public class AudioManagerScript : MonoBehaviour
     AudioClip audioClip;
     if(SoundEffectsDictionary.TryGetValue(soundEffectName, out audioClip))
     {
+      A_SourceSFX.volume = 0.2f;
       A_SourceSFX.PlayOneShot(audioClip);
     }
   }
