@@ -98,10 +98,13 @@ public class GridCell : MonoBehaviour
             {
                 if (GetComponentInParent<GameManagerBehaviour>().SpendSeed())
                 {
-                    SetOccupant(Occupant.tree);
+                    Instantiate((GameObject)Resources.Load("Prefabs/CanvasClock3", typeof(GameObject)), transform);
+
+                    Invoke("SetTreeOccupant", 3);
                     //so you cannot do this all again right away
                     actionController.CounterToDoActionAgain(3);
                     var acornObject = Instantiate(acornPlane);
+
                     acornObject.GetComponent<acornFeedbackBehavior>().SetValues(ResourcePosition, this.transform.position, 60.0f);
                 }
             }
@@ -111,11 +114,24 @@ public class GridCell : MonoBehaviour
             //so you cannot do this all again right away
             actionController.CounterToDoActionAgain(5);
 
-            SetOccupant(Occupant.empty);
+            Instantiate((GameObject)Resources.Load("Prefabs/CanvasClock5", typeof(GameObject)), transform);
+
+            Invoke("EmptyOccupant", 5);
+
             GetComponentInParent<GameManagerBehaviour>().GainSeed();
             var acornObject = Instantiate(acornPlane);
             acornObject.GetComponent<acornFeedbackBehavior>().SetValues(this.transform.position, ResourcePosition, 60.0f);
         }
+    }
+
+    void SetTreeOccupant()
+    {
+        SetOccupant(Occupant.tree);
+    }
+
+    void EmptyOccupant()
+    {
+        SetOccupant(Occupant.empty);
     }
 
     public void UpgradeOccupant()
