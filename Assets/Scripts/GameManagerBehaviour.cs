@@ -100,7 +100,7 @@ public class GameManagerBehaviour : MonoBehaviour
         }
     }
 
-    float GetPollution()
+  public int GetPollution()
 	{
         float totalPollution = startingPollution;
         GridCell[] cellArray = this.gameObject.GetComponentsInChildren<GridCell>();
