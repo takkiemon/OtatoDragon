@@ -10,7 +10,7 @@ public class ClickBehaviour : MonoBehaviour
     public Texture2D cursorClickTexture;
 
     private Color startcolor;
-    public GameObject acornPlane;
+    public GameObject dropletPlane;
 
     GlobalActionBehaviour actionController;
 

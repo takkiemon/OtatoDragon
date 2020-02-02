@@ -8,8 +8,7 @@ public class GridCell : MonoBehaviour
     GlobalActionBehaviour actionController;
 
     ICellOccupant cellOccupant; // the type of thing that is occupying the gridcell (tree or factory)
-    public GameObject acornPlane;
-    public GameObject acornUIElement;
+    public GameObject dropletPlane;
     public Vector2Int pos;
 
     private Vector3 ResourcePosition = new Vector3(173, 90, -2);
@@ -101,8 +100,8 @@ public class GridCell : MonoBehaviour
                     SetOccupant(Occupant.tree);
                     //so you cannot do this all again right away
                     actionController.CounterToDoActionAgain(3);
-                    var acornObject = Instantiate(acornPlane);
-                    acornObject.GetComponent<acornFeedbackBehavior>().SetValues(ResourcePosition, this.transform.position, 60.0f);
+                    var dropletObject = Instantiate(dropletPlane);
+                    dropletObject.GetComponent<waterFeedbackBehavior>().SetValues(ResourcePosition, this.transform.position, 60.0f);
                 }
             }
         }
@@ -113,8 +112,8 @@ public class GridCell : MonoBehaviour
 
             SetOccupant(Occupant.empty);
             GetComponentInParent<GameManagerBehaviour>().GainSeed();
-            var acornObject = Instantiate(acornPlane);
-            acornObject.GetComponent<acornFeedbackBehavior>().SetValues(this.transform.position, ResourcePosition, 60.0f);
+            var waterDroplet = Instantiate(dropletPlane);
+            waterDroplet.GetComponent<waterFeedbackBehavior>().SetValues(this.transform.position, ResourcePosition, 60.0f);
         }
     }
 

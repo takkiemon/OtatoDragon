@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class acornFeedbackBehavior : MonoBehaviour
+public class waterFeedbackBehavior : MonoBehaviour
 {
     public Vector3 lerpFrom, lerpTo;
     public float lerpSpeed;
@@ -31,6 +31,5 @@ public class acornFeedbackBehavior : MonoBehaviour
         this.lerpFrom = new Vector3(lerpFrom.x, lerpFrom.y, -2);
         this.lerpTo = new Vector3(lerpTo.x, lerpTo.y, -2); ;
         this.lerpSpeed = lerpSpeed;
-        Debug.Log("acorn behavior: lerp from (" + this.lerpFrom + ") to (" + this.lerpTo + ")");
     }
 }
