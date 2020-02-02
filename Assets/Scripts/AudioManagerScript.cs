@@ -19,7 +19,7 @@ public class AudioManagerScript : MonoBehaviour
 
   private float beatsPerMinute, beatsPerSecond, beatsPerTwoBars, secondsPerTwoBar, twoBarFixedSecond;
 
-  public int lightPollutionTreshold, mediumPollutionTreshold, highPollutionTreshold;
+  public float lightPollutionTreshold, mediumPollutionTreshold, highPollutionTreshold;
 
   public static AudioManagerScript Instance
   {
