@@ -5,8 +5,7 @@ using UnityEngine;
 public class GridCell : MonoBehaviour
 {
     //gotta reference to the globalclickcontroller
-    GlobalClickBehaviourDestroy actionControllerDestroy;
-    GlobalClickBehaviourPlant actionControllerPlant;
+    GlobalActionBehaviour actionController;
 
     ICellOccupant cellOccupant; // the type of thing that is occupying the gridcell (tree or factory)
     public GameObject acornPlane;
@@ -14,6 +13,9 @@ public class GridCell : MonoBehaviour
     public Vector2Int pos;
 
     private Vector3 ResourcePosition = new Vector3(173, 90, -2);
+
+    private GameObject pollutionIndicator;
+    private GameObject gameOccupantObject;
 
     public enum Occupant
     {
@@ -33,11 +35,7 @@ public class GridCell : MonoBehaviour
 
     void Start()
     {
-        //das referencesssss
-        actionControllerDestroy = GameObject.FindGameObjectWithTag("ActionTimerDestroy").GetComponent<GlobalClickBehaviourDestroy>();
-        actionControllerPlant = GameObject.FindGameObjectWithTag("ActionTimerPlant").GetComponent<GlobalClickBehaviourPlant>();
-
-        //Invoke("UpgradeOccupant", Random.Range(0, 30f));
+        actionController = GetComponentInParent<GlobalActionBehaviour>();
     }
 
     public int GetPollutionCount()
@@ -54,24 +52,29 @@ public class GridCell : MonoBehaviour
 
     public void SetOccupant(Occupant type)
     {
-        //if (cellOccupant == null)
-        //{
             switch (type)
             {
                 case Occupant.factory:
+                    Destroy(pollutionIndicator);
+                    pollutionIndicator = Instantiate((GameObject)Resources.Load("Prefabs/CO2", typeof(GameObject)), transform);
+                    Invoke("DestroyIndicator", 1);
+
                     cellOccupant = new FactoryOccupant();
-                    Instantiate((GameObject)Resources.Load("Prefabs/Factory", typeof(GameObject)),transform);
+                    Destroy(gameOccupantObject);
+                    gameOccupantObject = Instantiate((GameObject)Resources.Load("Prefabs/Factory", typeof(GameObject)),transform);
+
                 break;
                 case Occupant.tree:
+                    Destroy(pollutionIndicator);
+                    pollutionIndicator = Instantiate((GameObject)Resources.Load("Prefabs/O2", typeof(GameObject)), transform);
+                    Invoke("DestroyIndicator", 1);
+
                     cellOccupant = new TreeOccupant();
+                    Destroy(gameOccupantObject);
                     Instantiate((GameObject)Resources.Load("Prefabs/Tree Variant", typeof(GameObject)), transform);
-                Invoke("UpgradeOccupant", 20);
                 break;
                 case Occupant.empty:
-                    if (transform.childCount > 0)
-                    {
-                        Destroy(transform.GetChild(0).gameObject);
-                    }
+                    Destroy(gameOccupantObject);
                     cellOccupant = null;
                     break;
                 default:
@@ -82,9 +85,14 @@ public class GridCell : MonoBehaviour
 
     }
 
+    public void DestroyIndicator()
+    {
+        Destroy(pollutionIndicator);
+    }
+
     public void Interact()
     {
-        if (cellOccupant == null && actionControllerPlant.canIPlant)
+        if (cellOccupant == null && actionController.canDoAction)
         {
             if (!GetComponentInParent<GameManagerBehaviour>().NeighbourPolluted(pos))
             {
@@ -92,16 +100,16 @@ public class GridCell : MonoBehaviour
                 {
                     SetOccupant(Occupant.tree);
                     //so you cannot do this all again right away
-                    actionControllerPlant.CounterToDoActionAgainPlant();
+                    actionController.CounterToDoActionAgain(3);
                     var acornObject = Instantiate(acornPlane);
                     acornObject.GetComponent<acornFeedbackBehavior>().SetValues(ResourcePosition, this.transform.position, 60.0f);
                 }
             }
         }
-        else if (cellOccupant is FactoryOccupant && actionControllerDestroy.canIDestroy)
+        else if (cellOccupant is FactoryOccupant && actionController.canDoAction)
         {
             //so you cannot do this all again right away
-            actionControllerDestroy.CounterToDoActionAgainDestroy();
+            actionController.CounterToDoActionAgain(5);
 
             SetOccupant(Occupant.empty);
             GetComponentInParent<GameManagerBehaviour>().GainSeed();
@@ -113,9 +121,12 @@ public class GridCell : MonoBehaviour
     public void UpgradeOccupant()
     {
         if (cellOccupant == null)
+        {
             SetOccupant(Occupant.factory);
-        else
+        } else
+        {
             cellOccupant.IncreaseStage();
+        }
         GetComponentInParent<GameManagerBehaviour>().PollutionChanged.Invoke();
 
         Invoke("UpgradeOccupant", 20);

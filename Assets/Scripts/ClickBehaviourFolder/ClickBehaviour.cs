@@ -12,13 +12,11 @@ public class ClickBehaviour : MonoBehaviour
     private Color startcolor;
     public GameObject acornPlane;
 
-    GlobalClickBehaviourDestroy actionControllerDestroy;
-    GlobalClickBehaviourPlant actionControllerPlant;
+    GlobalActionBehaviour actionController;
 
     private void Start()
     {
-        actionControllerDestroy = GameObject.FindGameObjectWithTag("ActionTimerDestroy").GetComponent<GlobalClickBehaviourDestroy>();
-        actionControllerPlant = GameObject.FindGameObjectWithTag("ActionTimerPlant").GetComponent<GlobalClickBehaviourPlant>();
+        actionController = GetComponentInParent<GlobalActionBehaviour>();
     }
 
     void OnMouseDown()
@@ -36,11 +34,11 @@ public class ClickBehaviour : MonoBehaviour
         startcolor = GetComponent<Renderer>().material.color;
 
         //changes colour depending if you can do an action
-        if (actionControllerDestroy.canIDestroy || actionControllerPlant.canIPlant)
+        if (actionController.canDoAction)
         {
             GetComponent<Renderer>().material.color = Color.green;
         }
-        else if(!actionControllerDestroy.canIDestroy || !actionControllerPlant.canIPlant)
+        else if(!actionController.canDoAction)
         {
             GetComponent<Renderer>().material.color = Color.red;
         }
