@@ -5,8 +5,7 @@ using UnityEngine;
 public class GridCell : MonoBehaviour
 {
     //gotta reference to the globalclickcontroller
-    GlobalClickBehaviourDestroy actionControllerDestroy;
-    GlobalClickBehaviourPlant actionControllerPlant;
+    GlobalActionBehaviour actionController;
 
     ICellOccupant cellOccupant; // the type of thing that is occupying the gridcell (tree or factory)
     public GameObject acornPlane;
@@ -36,11 +35,7 @@ public class GridCell : MonoBehaviour
 
     void Start()
     {
-        //das referencesssss
-        actionControllerDestroy = GameObject.FindGameObjectWithTag("ActionTimerDestroy").GetComponent<GlobalClickBehaviourDestroy>();
-        actionControllerPlant = GameObject.FindGameObjectWithTag("ActionTimerPlant").GetComponent<GlobalClickBehaviourPlant>();
-
-        //Invoke("UpgradeOccupant", Random.Range(0, 30f));
+        actionController = GetComponentInParent<GlobalActionBehaviour>();
     }
 
     public int GetPollutionCount()
@@ -97,7 +92,7 @@ public class GridCell : MonoBehaviour
 
     public void Interact()
     {
-        if (cellOccupant == null && actionControllerPlant.canIPlant)
+        if (cellOccupant == null && actionController.canDoAction)
         {
             if (!GetComponentInParent<GameManagerBehaviour>().NeighbourPolluted(pos))
             {
@@ -105,16 +100,16 @@ public class GridCell : MonoBehaviour
                 {
                     SetOccupant(Occupant.tree);
                     //so you cannot do this all again right away
-                    actionControllerPlant.CounterToDoActionAgainPlant();
+                    actionController.CounterToDoActionAgain(3);
                     var acornObject = Instantiate(acornPlane);
                     acornObject.GetComponent<acornFeedbackBehavior>().SetValues(ResourcePosition, this.transform.position, 60.0f);
                 }
             }
         }
-        else if (cellOccupant is FactoryOccupant && actionControllerDestroy.canIDestroy)
+        else if (cellOccupant is FactoryOccupant && actionController.canDoAction)
         {
             //so you cannot do this all again right away
-            actionControllerDestroy.CounterToDoActionAgainDestroy();
+            actionController.CounterToDoActionAgain(5);
 
             SetOccupant(Occupant.empty);
             GetComponentInParent<GameManagerBehaviour>().GainSeed();
