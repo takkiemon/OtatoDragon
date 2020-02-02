@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class waterFeedbackBehavior : MonoBehaviour
+public class dropletFeedbackBehavior : MonoBehaviour
 {
     public Vector3 lerpFrom, lerpTo;
     public float lerpSpeed;
