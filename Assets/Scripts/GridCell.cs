@@ -143,7 +143,5 @@ public class GridCell : MonoBehaviour
             cellOccupant.IncreaseStage();
         }
         GetComponentInParent<GameManagerBehaviour>().PollutionChanged.Invoke();
-
-        Invoke("UpgradeOccupant", 20);
     }
 }
