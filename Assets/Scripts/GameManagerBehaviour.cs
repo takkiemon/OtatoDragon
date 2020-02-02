@@ -49,21 +49,18 @@ public class GameManagerBehaviour : MonoBehaviour
                 grid[x,y].pos = new Vector2Int(x,y);
             }
         }
-
-        /*river.Add(grid[5, 5],);
-        river.Add(grid[4, 5]);
-        river.Add(grid[4, 4]);
-        river.Add(grid[4, 3]);
-        river.Add(grid[5, 3]);
-        river.Add(grid[5, 2]);
-        river.Add(grid[4, 2]);
-        river.Add(grid[3, 2]);
-        river.Add(grid[2, 2]);
-        river.Add(grid[2, 1]);
-        river.Add(grid[1, 1]);
-        river.Add(grid[1, 0]);
-        river.Add(grid[0, 1]);
-        river.Add(grid[0, 0]);*/
+       river.Add(new KeyValuePair<GridCell,float>(grid[5, 5], 0.88f));
+        river.Add(new KeyValuePair<GridCell, float>(grid[4, 5],0.85f));
+        river.Add(new KeyValuePair<GridCell, float>(grid[4, 4], 0.75f));
+        river.Add(new KeyValuePair<GridCell, float>(grid[4, 3],0.68f));
+        river.Add(new KeyValuePair<GridCell, float>(grid[5, 3],0.58f));
+        river.Add(new KeyValuePair<GridCell, float>(grid[5, 2],052f));
+        river.Add(new KeyValuePair<GridCell, float>(grid[4, 2],0.45f));
+        river.Add(new KeyValuePair<GridCell, float>(grid[3,1],0.4f));
+        river.Add(new KeyValuePair<GridCell, float>(grid[2, 1],0.36f));
+        river.Add(new KeyValuePair<GridCell, float>(grid[1, 1],0.32f));
+        river.Add(new KeyValuePair<GridCell, float>(grid[1, 0],0.26f));
+        river.Add(new KeyValuePair<GridCell, float>(grid[0, 0],0.22f));
 
         for (int i = 0; i < 3; i++)
             SpawnFactoryOnRandomTile();
@@ -186,15 +183,12 @@ public class GameManagerBehaviour : MonoBehaviour
     public float GetRiverPolution()
     {
         float polStart = 0;
-        /*for (int i = 0; i < river.Count; i++)
+
+        foreach (KeyValuePair<GridCell,float> cell in river)
         {
-            if (river[i].GetOccupantType() == GridCell.Occupant.factory)
-            {
-                polStart = (float)river[i].pos.y / gridSize;
-                break;
-            }
-                
-        }*/
+            if (cell.Key.GetOccupantType() == GridCell.Occupant.factory && cell.Value > polStart)
+                polStart = 1f-cell.Value;
+        }
 
         return polStart;
     }
