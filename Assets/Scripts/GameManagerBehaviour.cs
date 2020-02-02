@@ -40,11 +40,12 @@ public class GameManagerBehaviour : MonoBehaviour
         river = new List<KeyValuePair<GridCell, float>>();
         grid = new GridCell[gridSize,gridSize];
 
-        for (int x = 0; x < gridSize; x++)
+        for (int y= 0; y < gridSize; y++)
         {
-            for (int y = 0; y < gridSize; y++)
+            for (int x = 0; x < gridSize; x++)
             {
-                grid[x, y] = Instantiate(gridCell, new Vector3(50 * x - 25 * (gridSize-1), 25*y - 12.5f*(gridSize-1) -10,0), new Quaternion(), transform)
+                grid[x,y] = Instantiate(gridCell, new Vector3(50 * x - 25 * (gridSize-1), -25 * y + 12.5f * (gridSize - 1) - 10
+                        , 0), new Quaternion(), transform)
                     .GetComponent<GridCell>();
                 grid[x,y].pos = new Vector2Int(x,y);
             }
@@ -102,13 +103,24 @@ public class GameManagerBehaviour : MonoBehaviour
 
     float GetPollution()
 	{
-        int totalPollution = startingPollution;
+        float totalPollution = startingPollution;
         GridCell[] cellArray = this.gameObject.GetComponentsInChildren<GridCell>();
         foreach (GridCell cell in cellArray)
         {
             totalPollution += cell.GetPollutionCount();
         };
+	    int pollutedRiver = river.Count;
 
+	    for (int i = 0; i < river.Count; i++)
+	    {
+	        if (river[i].Key.GetOccupantType() == GridCell.Occupant.factory)
+	        {
+	            pollutedRiver = i;
+	            break;
+	        }
+	    }
+
+	    totalPollution += 1.5f*(river.Count - pollutedRiver);
         return totalPollution;
     }
 
@@ -183,11 +195,11 @@ public class GameManagerBehaviour : MonoBehaviour
     public float GetRiverPolution()
     {
         float polStart = 0;
-
+        
         foreach (KeyValuePair<GridCell,float> cell in river)
         {
             if (cell.Key.GetOccupantType() == GridCell.Occupant.factory && cell.Value > polStart)
-                polStart = 1f-cell.Value;
+                polStart = cell.Value;
         }
 
         return polStart;
