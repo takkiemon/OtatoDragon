@@ -15,6 +15,8 @@ public class TreeOccupant : ICellOccupant
     public void IncreaseStage()
     {
         stage++;
+        //sound that a tree upgrades
+        GameObject.Find("AudioManager").GetComponent<AudioManagerScript>().PlaySoundEffects("treeTierUp");
     }
 
     public int GetStage()

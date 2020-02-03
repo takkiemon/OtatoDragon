@@ -102,6 +102,7 @@ public class GridCell : MonoBehaviour
                     Invoke("SetTreeOccupant", 3);
                     //so you cannot do this all again right away
                     actionController.CounterToDoActionAgain(3);
+                    GameObject.Find("AudioManager").GetComponent<AudioManagerScript>().PlaySoundEffects("plantTree");
 
                     var dropletObject = Instantiate(dropletPlane);
                     dropletObject.GetComponent<dropletFeedbackBehavior>().SetValues(ResourcePosition, this.transform.position, 100.0f);
@@ -113,6 +114,7 @@ public class GridCell : MonoBehaviour
             //so you cannot do this all again right away
             actionController.CounterToDoActionAgain(5);
 
+            GameObject.Find("AudioManager").GetComponent<AudioManagerScript>().PlaySoundEffects("factoryDestroy");
             Instantiate((GameObject)Resources.Load("Prefabs/CanvasClock5", typeof(GameObject)), transform);
 
             Invoke("EmptyOccupant", 5);
