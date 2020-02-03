@@ -9,7 +9,7 @@ public class TreeOccupant : ICellOccupant
     //Return the amount of polution caused by the occupying object.
     public int Pollution()
     {
-        return -2*stage;
+        return -4*stage;
     }
 
     public void IncreaseStage()
